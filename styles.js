@@ -5,23 +5,31 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    marginBottom: 10,
   },
 
   editBtn: {
+    fontSize: 18,
     borderWidth: 1,
-    
+    borderRadius: 10,
+  },
+
+  deleteBtn: {
+    fontSize: 18,
+    borderWidth: 1,
+    borderRadius: 10,
   },
 
   taskButton: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '50%',
   },
 
   doneButton: {
-    color: 'green',
-    fontSize: 20,
+    fontSize: 18,
     borderWidth: 1,
-    // width: '30%',
+    borderRadius: 10,
   },
 
   container: {
@@ -48,8 +56,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#d3d3d3',
     borderRadius: 10,
     fontSize: 16,
-    width: '100%',
+    // width: '10%',
     borderWidth: 2,
+    paddingLeft: 10,
   },
 
   pressAdd: {
@@ -58,7 +67,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'orange',
     color: 'white',
-    width: '100%',
+    // width: '100%',
     borderWidth: 1,
     borderRadius: 10,
   },
@@ -72,7 +81,10 @@ export const styles = StyleSheet.create({
     //   flex: 0.5,
     color: 'black',
     fontSize: 22,
+    // width: '50%',
   },
 
-  flatList: {},
+  flatList: {
+    // width: '100%',
+  },
 });

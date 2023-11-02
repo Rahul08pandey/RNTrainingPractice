@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import {todo} from 'node:test';
 import React, {useState} from 'react';
 import {
@@ -19,10 +20,10 @@ import {
 
 import {styles} from './styles';
 
-const toDoList = () => {
+const ToDoList = () => {
   const [task, setTask] = useState('');
   const [newTask, setNewTask] = useState([]);
-  const [editTask, setEditTask] = useState('-1');
+  const [editIndex, setEditIndex] = useState('-1');
 
   const addTask = () => {
     if (task) {
@@ -39,6 +40,18 @@ const toDoList = () => {
     setNewTask(newArray);
   };
 
+  const editTask = index => {
+    const taskToEdit = newTask[index];
+    setTask(taskToEdit);
+    setEditIndex(index);
+  };
+
+  const deleteTask = index => {
+    const delTask = [...newTask];
+    delTask.splice(index, 1);
+    setNewTask(delTask);
+  };
+
   const renderTask = ({item, index}) => (
     <View style={styles.tasks}>
       <Text
@@ -46,12 +59,20 @@ const toDoList = () => {
           textDecorationLine: item.done ? 'line-through' : 'none',
           color: 'blue',
           fontSize: 18,
+          width: '40%',
         }}>
         {item.text}
       </Text>
- 
-      
+
       <View style={styles.taskButton}>
+        <TouchableOpacity onPress={() => editTask(index)}>
+          <Text style={styles.editBtn}>Edit</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => deleteTask(index)}>
+          <Text style={styles.deleteBtn}>Delete</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => toggleTask(index)}
           disabled={item.done}>
@@ -85,13 +106,15 @@ const toDoList = () => {
       </View>
 
       <Text style={styles.textList}>List :</Text>
-      <FlatList
-        style={styles.flatList}
-        data={newTask}
-        renderItem={renderTask}
-        keyExtractor={(item, index) => index.toString()}></FlatList>
+
+      <View style={styles.flatList}>
+        <FlatList
+          data={newTask}
+          renderItem={renderTask}
+          keyExtractor={(item, index) => index.toString()}></FlatList>
+      </View>
     </View>
   );
 };
 
-export default toDoList;
+export default ToDoList;
