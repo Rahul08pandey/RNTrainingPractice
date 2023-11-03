@@ -4,7 +4,6 @@ import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { ScreenStack } from 'react-native-screens';
 
-
 function Home() {
     return (
         <View>
