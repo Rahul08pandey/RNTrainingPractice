@@ -1,26 +1,45 @@
-import { View, Text } from 'react-native'
+import 'react-native-gesture-handler';
 import React from 'react';
-import {NavigationContainer, StackActions} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { ScreenStack } from 'react-native-screens';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Register from './src/screens/Register/Register';
+import Home from './src/screens/Home/Home';
 
-function Home() {
-    return (
-        <View>
-            <Text>Home</Text>
-        </View>
-    )
-}
+const Stack = createStackNavigator();
 
+const Assignment3 = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initalRouteName="Register">
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            headerStyle: {
+              backgroundColor: 'indigo',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerStyle: {
+              backgroundColor: 'orange',
+            },
+            headerTintColor: 'white',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-const Stack = createNativeStackNavigator();
-export default function Assignment3() {
-    return (
-      <NavigationContainer>
-            <Stack.Navigator initialRouteName='Register'>
-                <Stack.Screen name="Register" component={Register} />
-                <Stack.Screen name="Home" component={Home}/>
-            </Stack.Navigator>
-            </NavigationContainer>
-    )
-}
+export default Assignment3;

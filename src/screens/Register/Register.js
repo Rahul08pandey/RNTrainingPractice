@@ -8,34 +8,53 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import {DatePickerProps} from 'react-native-date-picker';
-import {Dropdown} from 'react-native-element-dropdown';
+import DatePicker from 'react-native-date-picker';
+import React, {useState} from 'react';
 import {RadioButton} from 'react-native-paper';
-import CheckBox from 'react-native-checkbox';
-import React from 'react';
+import {Dropdown} from 'react-native-element-dropdown';
+import {useNavigation} from '@react-navigation/native';
 import {styles} from './rstyles';
-import {useState} from 'react';
+import {Item} from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
 
-const Register = () => {
+const Register = ({navigation}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [selectCountry, setSelectCountry] = useState('');
-  const [dob, setDob] = useState('');
-  const [selectGender, setSelectGender] = useState('');
-  //   const [error, setError] = useState(false);
-  //   const [submitted, setSubmitted] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [country, setCountry] = useState(false);
+  const [gender, setGender] = useState(null);
 
-  const toggleCheckbox = () => setChecked(!check);
-
-  const clickRegister = () => {
-    // Alert.alert(`Email: ${email} \n Password:${password}`);
-    Alert.alert('Please fill all the details!');
+  // //Register validation -
+  const submitHandler = () => {
+    if (!name.trim()) {
+      Alert.alert('Please enter name');
+    } else if (!email) {
+      Alert.alert('Please enter email');
+    } else if (password.length < 6) {
+      Alert.alert('Your Password must be at least 8 characters long');
+    } else if (password !== confirmPassword) {
+      Alert.alert('Password does not match!');
+    } else if (submitHandler) {
+      navigation.navigate('Home', {
+        name,
+        email,
+        country,
+        gender,
+        password,
+      });
+    } else {
+      Alert.alert('Registered Successfully!');
+    }
   };
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const countries = [
@@ -48,17 +67,16 @@ const Register = () => {
   ];
 
   const genderOptions = [
-    {label: 'Select Gender', value: ''},
     {label: 'Male', value: 'Male'},
     {label: 'Female', value: 'Female'},
-    // {label: 'Other', value: 'Other'},
   ];
 
   return (
-    <View style={styles.mainContainer}>
-      <ImageBackground
-        style={styles.bgImg}
-        source={require('../../../images/bg1.jpeg')}>
+    <ImageBackground
+      source={require('../../../images/bg1.jpeg')}
+      resizeMode="cover"
+      style={styles.bgImg}>
+      <View style={styles.mainContainer}>
         <View style={styles.heading}>
           <Text style={styles.hText}> REGISTER </Text>
         </View>
@@ -76,9 +94,9 @@ const Register = () => {
             <View style={styles.mail}>
               <TextInput
                 value={email}
-                placeholder={'Email'}
+                placeholder="Email"
                 onChangeText={text => setEmail(text)}
-                autoCapitalize={'none'}
+                // autoCapitalize={'none'}
               />
             </View>
           </View>
@@ -86,43 +104,30 @@ const Register = () => {
           <View style={styles.country}>
             <Text style={{color: 'black', fontSize: 16}}>Select Country:</Text>
             <Dropdown
-              style={{width: '60%', color: 'blue'}}
+              style={styles.countries}
               data={countries}
               labelField="label"
               valueField="value"
-              placeholder=" "
-              iconColor="red"
-            />
+              onChange={item => {
+                setCountry(item.value);
+              }}></Dropdown>
           </View>
 
           <View style={styles.radio}>
             <Text style={{color: 'black', fontSize: 18}}>Select Gender: </Text>
             <RadioButton
-              value="first"
-              status={selectGender === 'first' ? 'checked' : 'unchecked'}
-              onPress={() => setSelectGender('first')}
+              value="Male"
+              status={gender === 'Male' ? 'checked' : 'unchecked'}
+              onPress={() => setGender('Male')}
             />
             <Text style={{color: 'black', fontSize: 16}}> Male</Text>
             <RadioButton
-              value="second"
-              status={selectGender === 'second' ? 'checked' : 'unchecked'}
-              onPress={() => setSelectGender('second')}
+              value="Female"
+              status={gender === 'Female' ? 'checked' : 'unchecked'}
+              onPress={() => setGender('Female')}
             />
             <Text style={{color: 'black', fontSize: 16}}> Female</Text>
           </View>
-          {/* <View style={styles.dob}>
-            <Text style={{width: '100%'}}>Select DOB: </Text>
-            <DatePicker
-              style={{}}
-              date={dob}
-              mode="date"
-              placeholder="Select DOB"
-              format="YYYY-MM-DD"
-              confirmText="Confirm"
-              cancelText="Cancel"
-              onDateChange={date => setDob(date)}
-            />
-          </View> */}
 
           <View style={styles.psw}>
             <View style={styles.pswText}>
@@ -131,56 +136,60 @@ const Register = () => {
                 value={password}
                 onChangeText={text => setPassword(text)}
                 placeholder="Password"></TextInput>
-              <TouchableOpacity onPress={togglePassword} style={styles.logo}>
-                <Image source={require('../../../images/eye.png')} />
+              <TouchableOpacity onPress={togglePassword} style={styles.img}>
+                <Image
+                  source={
+                    showPassword
+                      ? require('../../../images/eye.png')
+                      : require('../../../images/eye.png')
+                  }
+                />
               </TouchableOpacity>
             </View>
 
             <View style={styles.confirmPswText}>
               <TextInput
-                secureTextEntry={!showPassword}
-                value={password}
-                onChangeText={text => setPassword(text)}
+                secureTextEntry={!showConfirmPassword}
+                value={confirmPassword}
+                onChangeText={text => setConfirmPassword(text)}
                 placeholder="Confirm Password"></TextInput>
-              <TouchableOpacity onPress={togglePassword} style={styles.logo}>
-                <Image source={require('../../../images/eye.png')} />
+              <TouchableOpacity
+                onPress={toggleConfirmPassword}
+                style={styles.img}>
+                <Image
+                  source={
+                    showConfirmPassword
+                      ? require('../../../images/eye.png')
+                      : require('../../../images/eye.png')
+                  }
+                />
               </TouchableOpacity>
             </View>
           </View>
-
-          {/* <View
-            style={{
-              flexDirection: 'row',
-              marginBottom: 20,
-            }}>
-            <CheckBox
-              style={styles.checkbox}
-              value={check}
-              onValueChange={setCheck}
-            />
-            <Text style={{textAlign: 'center'}}>
-              I agree to the terms of service for this page
-            </Text>
-          </View> */}
         </View>
 
         <View style={styles.register}>
-          <Pressable style={styles.register1} onPress={clickRegister}>
+          <Pressable
+            style={{
+              borderRadius: 50,
+              backgroundColor: 'green',
+              paddingVertical: 12,
+            }}
+            onPress={submitHandler}>
             <Text
               style={{
+                width: '100%',
                 fontSize: 18,
-                textAlign: 'center',
-                justifyContent: 'center',
                 color: 'black',
-                padding: 10,
+                alignSelf: 'center',
+                textAlign: 'center',
               }}>
               Register
             </Text>
           </Pressable>
         </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
-
 export default Register;

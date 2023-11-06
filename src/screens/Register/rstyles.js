@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 10,
-    alignItems: 'center',
     justifyContent: 'center',
   },
 
@@ -22,7 +21,7 @@ export const styles = StyleSheet.create({
 
   hText: {
     color: 'blue',
-    fontSize: 42,
+    fontSize: 35,
     fontWeight: 'bold',
   },
 
@@ -41,15 +40,15 @@ export const styles = StyleSheet.create({
   },
 
   name: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#808080',
     borderRadius: 50,
-    paddingLeft: '2%',
+    paddingLeft: 5,
   },
 
   mail: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#808080',
     borderRadius: 50,
-    paddingLeft: '2%',
+    paddingLeft: 5,
   },
 
   country: {
@@ -61,19 +60,18 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
   },
 
+  countries: {
+    width: '50%'
+  },
+
   radio: {
     flex: 0.1,
     width: '80%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'center',
     // backgroundColor: 'red',
   },
-
-  //   dob: {
-  //     flex: 0.1,
-  //     backgroundColor: 'grey',
-  //   },
 
   psw: {
     flex: 0.4,
@@ -82,20 +80,26 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'black',
   },
 
+  img: {
+    top: 15,
+    paddingRight: '5%',
+  },
+
   pswText: {
     borderRadius: 50,
     width: '100%',
-    backgroundColor: '#d3d3d3',
-    paddingLeft: '2%',
+    backgroundColor: '#808080',
+    paddingLeft: 5,
     flexDirection: 'row', //for eye icon(img)
     justifyContent: 'space-between', //for eye icon(img)
   },
 
   confirmPswText: {
-    borderRadius: 50,
     width: '100%',
-    backgroundColor: '#d3d3d3',
-    paddingLeft: '2%',
+    borderRadius: 50,
+    // backgroundColor: '#d3d3d3',
+    backgroundColor: '#808080',
+    paddingLeft: 5,
     flexDirection: 'row', //for eye icon(img)
     justifyContent: 'space-between', //for eye icon(img)
   },
@@ -112,11 +116,7 @@ export const styles = StyleSheet.create({
   register: {
     flex: 0.1,
     width: '50%',
+    // backgroundColor: 'red',
     alignSelf: 'center',
-  },
-
-  register1: {
-    backgroundColor: 'green',
-    borderRadius: 20,
   },
 });

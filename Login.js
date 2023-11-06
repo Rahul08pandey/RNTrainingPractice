@@ -15,15 +15,6 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {on} from 'events';
 import {styles} from './styles2';
 
 const Login = () => {
