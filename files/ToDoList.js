@@ -3,22 +3,15 @@ import {todo} from 'node:test';
 import React, {useState} from 'react';
 import {
   FlatList,
-  ImageBackground,
-  InteractionManager,
   Pressable,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   TextInput,
-  useColorScheme,
   View,
   Alert,
   TouchableOpacity,
 } from 'react-native';
 
-import {styles} from './styles';
+import {styles} from '../CSS/toDoListStyles';
 
 const ToDoList = () => {
   const [task, setTask] = useState('');

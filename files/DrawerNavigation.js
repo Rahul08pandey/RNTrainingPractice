@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
 
 function Home() {
   return (
@@ -41,8 +41,8 @@ const Drawer = createDrawerNavigator();
 function DrawerNavigation() {
     return (
         <Drawer.Navigator>
-            <Drawer.Screen name='Home' component={''} />
-            <Drawer.Screen name='Details' component={''}/>
+            <Drawer.Screen name='Home' component={Home} />
+            <Drawer.Screen name='Details' component={Details}/>
        </Drawer.Navigator>
    )
 }
@@ -50,6 +50,7 @@ function DrawerNavigation() {
 
 export default App = () => {
     return (
-        <NavigationContainer></NavigationContainer>
+      <NavigationContainer>
+        </NavigationContainer>
     )
 }

@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 10,
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 
   bgImg: {
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
 
   heading: {
-    flex: 0.2,
+    flex: 0.1,
     alignItems: 'center',
     justifyContent: 'center',
     // backgroundColor: 'yellow',
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
 
   subContainer: {
-    flex: 0.7,
+    flex: 0.8,
     justifyContent: 'space-between',
     alignItems: 'center',
     // backgroundColor: 'green',
@@ -51,6 +51,12 @@ export const styles = StyleSheet.create({
     paddingLeft: 5,
   },
 
+  contact: {
+    backgroundColor: '#808080',
+    borderRadius: 50,
+    paddingLeft: 5,
+  },
+
   country: {
     flex: 0.1,
     flexDirection: 'row',
@@ -61,7 +67,17 @@ export const styles = StyleSheet.create({
   },
 
   countries: {
-    width: '50%'
+    width: '60%',
+    backgroundColor: 'white',
+    // borderWidth: 1,
+  },
+
+  dob: {
+    flex: 0.1,
+    width: '80%',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'indigo',
   },
 
   radio: {
@@ -74,7 +90,7 @@ export const styles = StyleSheet.create({
   },
 
   psw: {
-    flex: 0.4,
+    flex: 0.3,
     width: '80%',
     justifyContent: 'space-evenly',
     // backgroundColor: 'black',
@@ -109,13 +125,17 @@ export const styles = StyleSheet.create({
     paddingRight: '5%',
   },
 
-  checkbox: {
-    alignSelf: 'center',
+  checkBox: {
+    // flex: 0.1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'red'
   },
 
   register: {
     flex: 0.1,
-    width: '50%',
+    width: '30%',
     // backgroundColor: 'red',
     alignSelf: 'center',
   },

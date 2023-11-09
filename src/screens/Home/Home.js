@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 
 const Home = ({ route }) => {
-  const { name, email, gender, password,country } = route.params;
+  const {name, email, country, dob , gender, password} = route.params;
   const navigation = useNavigation();
 
   const handleGoBack = () => {
@@ -31,7 +31,8 @@ const Home = ({ route }) => {
       <View>
         <Text style={{fontSize: 20}}> Name: {name}</Text>
         <Text style={{fontSize: 20}}> Email: {email}</Text>
-        <Text style={{fontSize: 20}}> Country: {country}</Text>
+        <Text style={{ fontSize: 20 }}> Country: {country}</Text>
+        <Text style={{ fontSize: 20 }}>DOB: {dob}</Text>
         <Text style={{fontSize: 20}}> Gender: {gender}</Text>
         <Text style={{fontSize: 20}}> Password: {password}</Text>
       </View>

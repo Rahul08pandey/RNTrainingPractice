@@ -1,21 +1,14 @@
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   View,
-  useColorScheme,
   Text,
   TextInput,
-  TextComponent,
-  Button,
   Alert,
   Pressable,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {styles} from './styles2';
+import {styles} from '../CSS/loginStyles';
 
 const Login = () => {
   const [email, setEmail] = useState('');

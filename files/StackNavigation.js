@@ -2,7 +2,9 @@ import {View, Text, Button, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import ToDoList from './ToDoList';
+import Login from './Login';
 
 // STACK NAVIGATION :-
 function HomeScreen({navigation}) {
@@ -48,7 +50,7 @@ function DetailsScreen({navigation}) {
         alignItems: 'center',
         // justifyContent: 'center',
       }}>
-      <Text style={{fontSize: 30, fontWeight: 'bold',color: 'black'}}>
+      <Text style={{fontSize: 30, fontWeight: 'bold', color: 'black'}}>
         Welcome to Details Screen....
       </Text>
       <Text>
@@ -65,7 +67,8 @@ function DetailsScreen({navigation}) {
       <Button
         color="orange"
         title="Go to Details Screen1"
-      onPress={() => navigation.navigate('Details1')}/>
+        onPress={() => navigation.navigate('Details1')}
+      />
       <Button
         color="green"
         title="Go to Details Screen again with push"
@@ -95,32 +98,34 @@ function DetailsScreen({navigation}) {
   );
 }
 
-function DetailsScreen1({ navigation }) {
+function DetailsScreen1({navigation}) {
   return (
-    <View style={{
-      flex: 1,
-      alignItems: 'center',
-      padding:10,
-      // justifyContent: 'center',
-    }}>
-      <Text style={{
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: 'black',
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        padding: 10,
+        // justifyContent: 'center',
       }}>
+      <Text
+        style={{
+          fontSize: 24,
+          fontWeight: 'bold',
+          color: 'black',
+        }}>
         Welcome to Details Screen 1....
       </Text>
-      <Text style={{ fontSize: 20, color: 'red' }}>Hello Rahul</Text>
+      <Text style={{fontSize: 20, color: 'red'}}>Hello Rahul</Text>
       <Button
-        color='black'
+        color="black"
         title="Go to Home"
-      onPress={() => navigation.popToTop('Home')}/>
+        onPress={() => navigation.popToTop('Home')}
+      />
     </View>
-  )
+  );
 }
 
 const Stack = createNativeStackNavigator(); // make a function and store in a variable...
-const Drawer = createDrawerNavigator(); 
 
 function TestNavigation() {
   return (
@@ -128,7 +133,7 @@ function TestNavigation() {
       <Stack.Navigator
         initialRouteName="HomeScreen"
 
-        // customization for navigation for all pages by screenOptions :-
+        // customization of header for navigation for all pages by screenOptions :-
 
         //   screenOptions={{
         //   headerShown: false,                         // hide the top bar for all screens work by screenOptions...
