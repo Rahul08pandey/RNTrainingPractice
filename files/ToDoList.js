@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import {todo} from 'node:test';
 import React, {useState} from 'react';
 import {
   FlatList,
@@ -74,7 +73,6 @@ const ToDoList = () => {
               styles.doneButton,
               item.done ? {color: 'yellow'} : {color: 'green'},
             ]}>
-            {' '}
             {item.done ? 'Completed' : 'Complete'}
           </Text>
         </TouchableOpacity>

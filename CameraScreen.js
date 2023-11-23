@@ -13,6 +13,7 @@ const CameraScreen = () => {
   const [capturePhoto, setCapturePhoto] = useState(null);
   const [cameraMode, setCameraMode] = useState('front');
   const [flash_Mode, setFlashMode] = useState('off');
+  const [selectImage, setSelectImage] = useState(null);
 
   const openActionSheet = () => {
     actionSheetRef.current?.show();
@@ -26,7 +27,7 @@ const CameraScreen = () => {
         height: 400,
         cropping: true,
       });
-      console.log(image);
+      setSelectImage({ uri: image.path });
     } catch (err) {
       console.error('Does not pick image:', err);
     }
