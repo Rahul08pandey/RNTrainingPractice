@@ -1,7 +1,7 @@
 import {LOGIN, SIGNUP, LOGOUT} from '../actions/actionTypes';
 
 const initialState = {
-  users: [],
+  user: [],
   userLogin: {},
 };
 
@@ -10,13 +10,13 @@ const userReducer = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        users: state.users,
+        user: state.user,
         userLogin: action.payload,
       };
 
     case SIGNUP:
       return {
-        users: [...state.users, action.payload],
+        user: [...state.user, action.payload],
       };
 
     case LOGOUT:

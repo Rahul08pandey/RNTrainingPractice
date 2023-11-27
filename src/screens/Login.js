@@ -9,7 +9,7 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const loginUserData = useSelector(state => state.default.users);
+  const loginUserData = useSelector(state => state.default.user);
   console.log('Login', loginUserData);
   const userLogin = useSelector(state => state.default);
   console.log('login', userLogin);
