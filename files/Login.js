@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {styles} from '../CSS/loginStyles';
+import {Icon} from 'react-native-vector-icons';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -48,13 +49,15 @@ const Login = () => {
               secureTextEntry={!showPassword}
               value={password}
               onChangeText={text => setPassword(text)}
-              placeholder="Password"></TextInput>
+              placeholder="Enter your Password"></TextInput>
             <TouchableOpacity onPress={togglePassword} style={styles.img}>
-              <Image source={require('./images/eye.png')} />
+              <Image source={require('../images/eye.png')} />
             </TouchableOpacity>
           </View>
 
-          <Text style={styles.forget}> Forget Password? </Text>
+          <View>
+            <TouchableOpacity onPress={rememberUser}></TouchableOpacity>
+          </View>
         </View>
       </View>
 
@@ -62,13 +65,6 @@ const Login = () => {
         <Pressable style={styles.btn} onPress={clickLogin}>
           <Text style={styles.btnText}> Login </Text>
         </Pressable>
-
-        <View style={styles.info}>
-          <Text style={styles.info1}>
-            If you don't have an account?
-            <Text style={styles.signUp}>Sign Up</Text>
-          </Text>
-        </View>
       </View>
     </View>
   );

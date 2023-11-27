@@ -113,11 +113,11 @@ export const styles = StyleSheet.create({
   confirmPswText: {
     width: '100%',
     borderRadius: 50,
-    // backgroundColor: '#d3d3d3',
     backgroundColor: '#808080',
     paddingLeft: 5,
     flexDirection: 'row', //for eye icon(img)
     justifyContent: 'space-between', //for eye icon(img)
+    // backgroundColor: '#d3d3d3',
   },
 
   logo: {
@@ -136,7 +136,7 @@ export const styles = StyleSheet.create({
   register: {
     flex: 0.1,
     width: '30%',
-    // backgroundColor: 'red',
     alignSelf: 'center',
+    // backgroundColor: 'red',
   },
 });

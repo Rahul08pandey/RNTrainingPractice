@@ -69,8 +69,10 @@ const Todo = () => {
       }}>
       <Text
         style={[
-          {fontSize: 20, color: 'blue'},
-          item.completed && {textDecorationLine: 'line-through'},
+          {fontSize: 20, color: 'indigo'},
+          item.completed && {
+            textDecorationLine: 'line-through',
+          color: 'red'},
         ]}>
         {item.text}
       </Text>
