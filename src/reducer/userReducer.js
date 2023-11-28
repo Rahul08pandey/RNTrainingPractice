@@ -1,8 +1,10 @@
-import {LOGIN, SIGNUP, LOGOUT} from '../actions/actionTypes';
+import {LOGIN, SIGNUP, LOGOUT, REMEMBER_USER} from '../actions/actionTypes';
 
 const initialState = {
   user: [],
   userLogin: {},
+  // registrationError: null,
+  rememberMe: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -16,7 +18,9 @@ const userReducer = (state = initialState, action) => {
 
     case SIGNUP:
       return {
+        ...state,
         user: [...state.user, action.payload],
+        // registrationError: null,
       };
 
     case LOGOUT:
@@ -24,6 +28,12 @@ const userReducer = (state = initialState, action) => {
         ...state,
         userLogin: null,
       };
+
+    // case REMEMBER_USER:
+    //   return {
+    //     ...state,
+    //     rememberMe: !state.rememberMe,
+    //   };
 
     default:
       return state;

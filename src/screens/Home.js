@@ -30,7 +30,7 @@ const Home = ({navigation}) => {
             fontWeight: 'bold',
             textAlign: 'center',
           }}>
-          WELCOME
+          WELCOME {userData.name}
         </Text>
       </View>
 

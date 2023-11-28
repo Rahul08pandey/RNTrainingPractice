@@ -42,7 +42,7 @@ const AppNavigation = () => {
               headerStyle: {
                 backgroundColor: 'grey', // for background color in header
               },
-              headerTintColor: 'blue', // for text color in header
+              headerTintColor: 'orange', // for text color in header
               headerTitleStyle: {
                 fontWeight: 'bold',
               },

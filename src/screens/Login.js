@@ -1,6 +1,7 @@
 import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DatePicker from 'react-native-date-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {login} from '../actions/userAction';
@@ -34,7 +35,7 @@ const Login = ({navigation}) => {
     if (userMatch.length > 0) {
       dispatch(login(email, password));
     } else {
-      Alert.alert('Data not available');
+      Alert.alert('User data not available !');
     }
   };
 
