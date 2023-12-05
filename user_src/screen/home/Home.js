@@ -37,7 +37,7 @@ export const Home = ({navigation}) => {
       <TouchableOpacity onPress={handleLogout} style={styles.btn}>
         <Text
           style={{
-            fontSize: 18,
+            fontSize: 18,        
             color: 'white',
             textAlign: 'center',
             paddingTop: 10,

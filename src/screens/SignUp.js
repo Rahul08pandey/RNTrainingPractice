@@ -13,7 +13,7 @@ import {signUp} from '../actions/userAction';
 const SignUp = ({navigation}) => {
   const dispatch = useDispatch();
   const signUpUser = useSelector(state => state.default.user);
-  console.log(signUpUser);
+  console.log('signUp', signUpUser);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [contact, setContact] = useState('');

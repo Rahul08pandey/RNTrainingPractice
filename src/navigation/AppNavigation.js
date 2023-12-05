@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
   const checkUserData = useSelector(state => state.default.userLogin);
-  console.log(checkUserData);
+  console.log('userData', checkUserData);
 
   return (
     <NavigationContainer>

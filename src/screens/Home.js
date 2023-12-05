@@ -27,8 +27,8 @@ const Home = ({navigation}) => {
           style={{
             color: 'purple',
             fontSize: 40,
-            fontWeight: 'bold',
             textAlign: 'center',
+            fontFamily: 'MoonDance-Regular',
           }}>
           WELCOME {userData.name}
         </Text>

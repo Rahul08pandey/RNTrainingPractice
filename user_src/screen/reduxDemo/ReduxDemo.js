@@ -4,10 +4,6 @@ import {
   Text,
   Button,
   StyleSheet,
-  ScrollView,
-  Modal,
-  Pressable,
-  Image,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {

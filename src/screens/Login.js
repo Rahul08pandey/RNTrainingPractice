@@ -1,19 +1,20 @@
 import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import DatePicker from 'react-native-date-picker';
+// import DatePicker from 'react-native-date-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {login} from '../actions/userAction';
 
 const Login = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const loginUserData = useSelector(state => state.default.user);
   console.log('Login', loginUserData);
   const userLogin = useSelector(state => state.default);
   console.log('login', userLogin);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const rememberUser = () => {
     console.log('hlo');
@@ -31,6 +32,7 @@ const Login = ({navigation}) => {
         loginUserData.email === user.email &&
         loginUserData.password === user.password,
     );
+    console.log(loginUserData, 'loginUserData....');
 
     if (userMatch.length > 0) {
       dispatch(login(email, password));
@@ -62,16 +64,15 @@ const Login = ({navigation}) => {
             style={{
               color: 'blue',
               fontSize: 40,
-              fontWeight: 'bold',
-              fontFamily: 'Poppins',
+              fontFamily: 'DancingScript-Bold',
             }}>
             LOGIN
           </Text>
           <Text
             style={{
               color: 'black',
-              fontSize: 18,
-              fontFamily: 'Poppins',
+              fontSize: 20,
+              fontFamily: 'DancingScript-Regular',
             }}>
             Login To Your Account
           </Text>
