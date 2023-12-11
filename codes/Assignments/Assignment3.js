@@ -2,8 +2,8 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Register from '../Counter redux/src/screens/Register/Register';
-import Home from '../Counter redux/src/screens/Home/Home';
+import Register from '../Redux/Counter redux/src/screens/Register/Register';
+import Home from '../Redux/Counter redux/src/screens/Home/Home';
 
 const Stack = createStackNavigator();
 

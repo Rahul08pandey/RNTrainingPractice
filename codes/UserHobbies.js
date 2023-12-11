@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import UserModal from './user_Data/UserModal';
+import UserModal from './user_Data_Static/UserModal';
 
 const UserHobbies = () => {
   const [user, setUser] = useState('');

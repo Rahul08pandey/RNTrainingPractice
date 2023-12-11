@@ -4,40 +4,25 @@ import UserModal from './UserModal';
 
 export default function UserData() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [users, setUsers] = useState([
+  const [userData, setUserData] = useState([
     {
-      user_name: 'Aman',
-      hobbies: [
-        {id: 1, name: 'Reading Books'},
-        {id: 2, name: 'Playing Cricket'},
-        {id: 3, name: 'Watching Movies'},
-      ],
+      user_name: 'Rahul',
+      hobbies: [{name: 'Cycling'}, {name: 'Video Games'}],
     },
     {
-      user_name: 'Vaibhav',
-      hobbies: [
-        {id: 1, name: 'Playing Cricket'},
-        {id: 2, name: 'Playing Video Games'},
-        {id: 3, name: 'Tracking'},
-      ],
+      user_name: 'Aman',
+      hobbies: [{name: 'Walking'}, {name: 'Dancing'}],
     },
   ]);
 
-  const handleUser = newUser => {
-    // console.log('first', users);
-    setUsers([...users, newUser]);
-  };
-
   const addUser = () => {
-    // console.log(users);
     setModalVisible(true);
   };
 
   const renderHobbies = ({item}) => (
     <View style={{marginTop: 10}}>
-      <Text style={{marginLeft: 10, fontSize: 16, color: 'brown'}}>
-        {item.id}
-        <Text style={{fontSize: 18, color: '#008080'}}> - {item.name}</Text>
+      <Text style={{fontSize: 18, color: '#008080', marginLeft: 20}}>
+        {item.name}
       </Text>
     </View>
   );
@@ -54,10 +39,19 @@ export default function UserData() {
       <Text style={styles.userTxt}>Hobbies:</Text>
       <FlatList
         data={item.hobbies}
-        keyExtractor={hobby => hobby.name}
+        keyExtractor={(hobby, index) => String(index)}
         renderItem={renderHobbies}></FlatList>
     </View>
   );
+
+  const handleAddUser = usersData => {
+    setUserData(prevUser => {
+      const setUserData = Object.assign({}, prevUser, usersData);
+      return setUserData;
+    });
+    // setModalVisible(false);
+  };
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.subContainer1}>
@@ -66,7 +60,7 @@ export default function UserData() {
       <View style={styles.subContainer2}>
         <Text style={styles.heading2}>User and their hobbies:</Text>
         <FlatList
-          data={users}
+          data={userData}
           keyExtractor={(item, index) => String(index)}
           // keyExtractor={user => user.user_name}
           renderItem={renderUser}
@@ -79,8 +73,8 @@ export default function UserData() {
       </View>
       <UserModal
         visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onData={handleUser}
+        onRequestClose={() => setModalVisible(false)}
+        onAddUsers={handleAddUser}
       />
     </View>
   );
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   heading2: {
-    fontSize: 25,
+    fontSize: 30,
     color: 'red',
     fontFamily: 'DancingScript-Regular',
     textDecorationLine: 'underline',

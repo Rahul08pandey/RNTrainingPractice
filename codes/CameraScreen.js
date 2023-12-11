@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, Modal, Image} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {Camera} from 'react-native-camera-kit';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {styles} from './stylesCameraScreen';
+import {styles} from '../CSS/stylesCameraScreen';
 import ActionSheet from 'react-native-actions-sheet';
 import ImageCropPicker from 'react-native-image-crop-picker';
 
