@@ -35,12 +35,11 @@ export default PharmacyModal = ({isVisible, onAddPharmacy, onClose}) => {
   };
 
   const handleAddMedicine = addMedIndex => {
-    const updateMedicine = [...pharmacyData.medicineCategory];
-    updateMedicine[addMedIndex].medicineNames.push({name: ''});
-    setPharmacyData(prevMed =>
-      Object.assign({}, prevMed, {medicineCategory: updateMedicine}),
-    );
-  };
+      const updateMedicine = [...pharmacyData.medicineCategory];
+      updateMedicine[addMedIndex].medicineNames.push({ name: '' });
+      setPharmacyData(prevMed=>
+      Object.assign({},prevMed,{medicineCategory:updateMedicine}))
+    };
 
   const handleSavePharmacy = () => {
     // console.log('setPharmacyData', setPharmacyData);
@@ -85,10 +84,12 @@ export default PharmacyModal = ({isVisible, onAddPharmacy, onClose}) => {
         </View>
 
         <ScrollView
-          style={{
-            flex: 0.8,
-            // backgroundColor: 'blue'
-          }}>
+          style={
+            {
+              flex: 0.8,
+              // backgroundColor: 'blue'
+            }
+          }>
           <Text
             style={{
               fontSize: 22,
@@ -159,7 +160,7 @@ export default PharmacyModal = ({isVisible, onAddPharmacy, onClose}) => {
               </View>
 
               {medCategory.medicineNames.map((item, medNameIndex) => (
-                <View style={styles.medicineName}>
+                <View style={styles.medicineName} key={medNameIndex}>
                   <TextInput
                     style={styles.medicineNameInput}
                     placeholder="Enter Medicine Name"
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
   },
 
   heading: {
-    fontSize: 40,
+    fontSize: 36,
     textAlign: 'center',
     color: 'green',
     fontFamily: 'Lugrasimo-Regular',
@@ -269,6 +270,7 @@ const styles = StyleSheet.create({
     flex: 0.05,
     alignItems: 'center',
     justifyContent: 'center',
+    // backgroundColor:'red'
   },
 
   saveBtn: {

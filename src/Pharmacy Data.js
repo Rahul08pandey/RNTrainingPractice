@@ -1,4 +1,11 @@
-import {View, FlatList, Text, StyleSheet, TouchableOpacity, TextComponent} from 'react-native';
+import {
+  View,
+  FlatList,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextComponent,
+} from 'react-native';
 import {useState, React} from 'react';
 import PharmacyModal from './modal/Pharamcy Modal';
 
@@ -89,7 +96,7 @@ const PharmacyData = () => {
         <Text style={styles.heading2}>Pharmacies and their Types :</Text>
         <FlatList
           data={allPharmacyData}
-          keyExtractor={(item, index) => Math.random()}
+          // keyExtractor={(item, index) => Math.random()}
           renderItem={renderPharmacyData}
           ListEmptyComponent={emptyRecord}
         />
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
   },
 
   heading1: {
-    fontSize: 46,
+    fontSize: 40,
     color: 'green',
     fontFamily: 'PlaypenSans-Bold',
     textDecorationLine: 'underline',
