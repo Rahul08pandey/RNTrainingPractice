@@ -35,6 +35,7 @@ const CameraScreen = ({navigation}) => {
   const [showCamera, setShowCamera] = useState(true);
   const [flash, setFlash] = useState('off');
   const [isRecording, setIsRecording] = useState(false);
+  const [cameraType, setCameraType] = useState('back');
   const {hasPermission, requestPermission} = useCameraPermission();
   const {
     hasPermission: microphonePermission,
@@ -129,6 +130,10 @@ const CameraScreen = ({navigation}) => {
     console.log('image');
   };
 
+  const handleFlipCamera = () => {
+    console.log('Flip the camera');
+  };
+
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.heading}>Camera</Text>
@@ -150,7 +155,7 @@ const CameraScreen = ({navigation}) => {
             onPress={() => setPhoto(undefined)}
             name="cross"
             size={60}
-            color="black"
+            color="white"
             style={{top: 0, left: 10, position: 'absolute'}}
           />
           <View style={styles.uploadImageView}>
@@ -197,6 +202,7 @@ const CameraScreen = ({navigation}) => {
             }}
           />
           <MaterialIcons
+            onPress={handleFlipCamera}
             name="flip-camera-android"
             size={60}
             color="white"

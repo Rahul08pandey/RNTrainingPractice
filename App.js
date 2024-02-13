@@ -3,7 +3,7 @@ import store from './src /redux/store/store';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './src /navigation/RootNavigator';
-// import SIGNIN from './SIGNIN';
+import CameraNavigator from './CameraCode/navigation/CameraNavigator';
 
 const App = () => {
   useEffect(() => {
@@ -11,13 +11,9 @@ const App = () => {
   }, []);
 
   return (
-    // <SIGNIN />
     <Provider store={store}>
-    {/* <UpdateProfile/> */}
-      <RootNavigator />
-      {/* <Profile/> */}
-      {/* <AuthNavigator /> */}
-      {/* <Register/> */}
+      {/* <RootNavigator/> */}
+      <CameraNavigator />
     </Provider>
 
     // <Comment/>
