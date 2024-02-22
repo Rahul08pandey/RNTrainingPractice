@@ -6,22 +6,6 @@ export const handleDatabase = () => {
   //   getuserData();
 };
 
-// const getuserData = () => {
-//   database()
-//     .ref('/users/aman')
-//     .once('value')
-//     .then(snapshot => {
-//       const user = snapshot.val();
-//       if (user) {
-//         console.log('Retrive user data  :', user);
-//       } else {
-//         console.log('not found!');
-//       }
-//     })
-//     .catch(error => {
-//       console.log('error reading data');
-//     });
-// };
 const addData = () => {
   const user_data = [
     {

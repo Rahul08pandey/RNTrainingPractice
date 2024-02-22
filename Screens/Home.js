@@ -1,19 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import Feather from 'react-native-vector-icons/Feather';
+import {StyleSheet, Text, View, Image, FlatList, Animated} from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
 import database from '@react-native-firebase/database';
 
-const Home = ({route, navigation}) => {
-  // const {posts} = route.params ? route.params : {};
+const Home = () => {
   const [posts, setPosts] = useState([]);
+  const translation = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(translation, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  });
 
   useEffect(() => {
     const postsRef = database().ref('/posts');
@@ -38,10 +37,10 @@ const Home = ({route, navigation}) => {
       {posts ? (
         <>
           <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
+            <Animated.Image
+              style={[styles.image, {opacity: translation}]}
               source={{uri: item.uri}}
-              resizeMode="contain"
+              resizeMode="cover"
             />
             <Text style={styles.caption}>{item.caption}</Text>
           </View>

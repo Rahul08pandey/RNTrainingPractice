@@ -13,19 +13,20 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import database from '@react-native-firebase/database';
 
 const Post = ({navigation, route}) => {
-  // const {photo} = route.params ? route.params : {};
   const photo = route.params?.photo;
   const [caption, setCaption] = useState('');
   const [posts, setPosts] = useState([]);
-  console.log(photo, 'photo');
 
   const openCamera = () => {
     navigation.navigate('Home');
   };
 
-  const uploadPost = () => {
+  const capturedPhoto = `data:${photo.mime};base64,${photo.data}`;
+  console.log('capturedPhoto', photo);
+
+  const uploadPost = async () => {
     const user = {
-      uri: `data:${photo.mime};base64,${photo.data}`,
+      uri: photo,
       caption: caption,
     };
 
@@ -41,7 +42,6 @@ const Post = ({navigation, route}) => {
         });
 
       const newPosts = [...posts, {photo, caption}];
-      // const newPosts = [...posts, {...user}];
       setPosts(newPosts);
       navigation.navigate('Home', {posts: newPosts});
       setCaption('');
@@ -55,26 +55,9 @@ const Post = ({navigation, route}) => {
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Add Image</Text>
         {photo ? (
-          <Image
-            style={styles.image}
-            source={{uri: `data:${photo.mime};base64,${photo.data}`}}
-            // source={{uri: `file://${photo.path}`}}
-          />
+          <Image style={styles.image} source={{uri: photo}} />
         ) : (
           <>
-            <View
-              style={{
-                margin: 15,
-                alignItems: 'center',
-                // backgroundColor: 'green',
-              }}>
-              <Text
-                style={{
-                  fontSize: 18,
-                }}>
-                Please capture or upload image first....
-              </Text>
-            </View>
             <View style={styles.cameraButton}>
               <IonIcons name="camera" size={40} color="black" />
               <TouchableOpacity onPress={openCamera}>
@@ -96,9 +79,16 @@ const Post = ({navigation, route}) => {
         />
       </View>
 
-      <View>
-        <TouchableOpacity style={styles.uploadButton} onPress={uploadPost}>
-          <Text style={styles.uploadTxt}>Upload</Text>
+      <View
+        style={
+          {
+            // flex: 0.1,
+            // backgroundColor: 'red',
+            // justifyContent: 'flex-end',
+          }
+        }>
+        <TouchableOpacity style={styles.postButton} onPress={uploadPost}>
+          <Text style={styles.uploadTxt}>Post</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -122,10 +112,11 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    height: 300,
+    height: 250,
     width: '100%',
     marginTop: 10,
     borderRadius: 10,
+    // backgroundColor: 'gray',
   },
 
   inputContainer: {
@@ -160,10 +151,12 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
   },
 
-  uploadButton: {
+  postButton: {
+    // height: '100%',
     width: '100%',
     borderRadius: 10,
     marginTop: 20,
+
     backgroundColor: '#1C6758',
     justifyContent: 'center',
   },

@@ -6,6 +6,7 @@ import {
   View,
   Image,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import {
   Camera,
@@ -15,6 +16,7 @@ import {
 } from 'react-native-vision-camera';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ImagePicker from 'react-native-image-crop-picker';
+import RNFS from 'react-native-fs';
 
 const CameraScreen = ({navigation}) => {
   const camera = useRef(null);
@@ -78,7 +80,7 @@ const CameraScreen = ({navigation}) => {
       includeBase64: true,
     })
       .then(image => {
-        setPhoto(image);
+        setPhoto(image.path);
       })
       .catch(error => {
         if (ImagePicker.isCancel(error)) {
@@ -96,22 +98,33 @@ const CameraScreen = ({navigation}) => {
       saveToGallery: true,
       base64Encoded: true,
     });
+
     console.log('Image captured:', photo);
     setPhoto(photo);
+    convertToBase64(photo);
   };
 
   const handleFlipCamera = () => {
     setCameraType(cameraType === 'back' ? 'front' : 'back');
   };
 
+  const convertToBase64 = async photo => {
+    try {
+      const base64Data = await RNFS.readFile(photo.path, 'base64');
+      console.log(photo.path, 'DATA');
+      const base64Post = `data:image/jpeg;base64,${base64Data.trim('')}`;
+      setPhoto(base64Post);
+      // console.log('photo', photo);
+      // console.log('base64', base64Post);
+    } catch (error) {
+      console.log('Error converting to base64:', error);
+    }
+  };
+
   const uploadImage = async () => {
     if (!photo) {
       return;
     }
-    const result = await fetch(`file://${photo.path}`);
-    console.log('result', result);
-    // const data = await result.blob();
-    // console.log('data', data);
     navigation.navigate('Post', {photo: photo});
   };
 
@@ -132,7 +145,7 @@ const CameraScreen = ({navigation}) => {
       {photo ? (
         <>
           <Image
-            source={{uri: `file://${photo.path}`}}
+            source={{uri: `file://${photo}`}}
             style={StyleSheet.absoluteFill}
           />
 
@@ -144,8 +157,9 @@ const CameraScreen = ({navigation}) => {
             style={{top: 10, left: 10, position: 'absolute'}}
           />
           <View style={styles.uploadImageView}>
+            {/* <Scroll url={`file://${photo}`} /> */}
             <TouchableOpacity onPress={uploadImage}>
-              <Text style={styles.uploadImageText}>Upload</Text>
+              <Text style={styles.uploadImageText}>Save</Text>
             </TouchableOpacity>
           </View>
         </>
@@ -241,6 +255,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     color: '#00FFFF',
+    marginTop: 10,
   },
 
   flashButton: {
