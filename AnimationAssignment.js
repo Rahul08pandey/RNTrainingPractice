@@ -116,7 +116,7 @@ const AnimationAssignment = () => {
       <View style={styles.contentContainer}>
         <Animated.Image
           style={[styles.offerImg, {transform: [{rotate: rotate}]}]}
-          source={require('../images/discount-badge.png')}
+          source={require('./images/discount-badge.png')}
         />
         <Text
           style={{
