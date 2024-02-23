@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import CameraScreen from '../Screens/CameraScreen';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Animated} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import {handleDatabase} from '../src/FireBaseDataBase/FirebaseDatabase';
 import Home from '../Screens/Home';
 import Post from '../Screens/Post';
 

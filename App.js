@@ -3,9 +3,10 @@ import {Provider} from 'react-redux';
 // import store from './src /redux/store/store';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './Navigation/RootNavigator';
-import requestUserPermission from './src/Push_Notification/Notification';
-import getToken from './src/Push_Notification/Notification';
-import {handleDatabase} from './src/FireBaseDataBase/FirebaseDatabase';
+import requestUserPermission from './Notification';
+import getToken from './Notification';
+import {handleDatabase} from './FireBaseDataBase/FirebaseDatabase';
+import AnimationAssignment from './src/AnimationAssignment';
 
 const App = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const App = () => {
   return (
     // <Provider store={store}>
     <RootNavigator />
+    // <AnimationAssignment />
     // </Provider>
   );
 };
