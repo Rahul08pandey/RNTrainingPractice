@@ -3,7 +3,10 @@ import store from './src /redux/store/store';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './src /navigation/RootNavigator';
-import CameraNavigator from './CameraCode/navigation/CameraNavigator';
+import requestUserPermission from './Notification';
+import {handleDatabase} from './FirebaseDB';
+requestUserPermission();
+handleDatabase();
 
 const App = () => {
   useEffect(() => {
@@ -12,11 +15,8 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      {/* <RootNavigator/> */}
-      <CameraNavigator />
+      <RootNavigator />
     </Provider>
-
-    // <Comment/>
   );
 };
 

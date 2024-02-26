@@ -11,8 +11,8 @@ import {authenticateUser, setError} from '../redux/reducer/authSlice';
 const Stack = createStackNavigator();
 
 const RootNavigator = () => {
-  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const isAuthenticated = true;
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  // const isAuthenticated = true;
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "514500911968",
+    "project_id": "fir-36894",
+    "storage_bucket": "fir-36894.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514500911968:android:329dfd486e033d045af405",
+        "android_client_info": {
+          "package_name": "com.todolist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQU879gtuRdMVMPHaXrW7hlUVmFsXup2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
