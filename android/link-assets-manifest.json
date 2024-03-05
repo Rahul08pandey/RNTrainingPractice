@@ -1,0 +1,173 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Borel-Regular.ttf",
+      "sha1": "4ed790f861450e6a79072982bd519a332798509f"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-Bold.ttf",
+      "sha1": "40e545d9cdad467a919c2a38c032bc4fdb69c01f"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-Medium.ttf",
+      "sha1": "575d42d95b4b562cbd91341e61ab754386ffeadd"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-Regular.ttf",
+      "sha1": "77b7bf804974618d28d7b73c79ea5d34c82cb704"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-SemiBold.ttf",
+      "sha1": "3d2e9198ccd497e0ccaf29b53cd2e4e9063dc78a"
+    },
+    {
+      "path": "src/assets/fonts/Estonia-Regular.ttf",
+      "sha1": "94e0c684298842de96df65416af3c7cf1589c662"
+    },
+    {
+      "path": "src/assets/fonts/GrechenFuemen-Regular.ttf",
+      "sha1": "38a61521741a0b6793c2e888c901818c4f8f4067"
+    },
+    {
+      "path": "src/assets/fonts/GreyQo-Regular.ttf",
+      "sha1": "3af4276e9841375c53b32dc83071b790932e6bd1"
+    },
+    {
+      "path": "src/assets/fonts/IngridDarling-Regular.ttf",
+      "sha1": "fb42f4a9d095cadbf3d00cd83c257ccacd07b772"
+    },
+    {
+      "path": "src/assets/fonts/Lugrasimo-Regular.ttf",
+      "sha1": "66377db98c17977c6eef8f290d1e32465ab81e98"
+    },
+    {
+      "path": "src/assets/fonts/Lumanosimo-Regular.ttf",
+      "sha1": "95a41a2fb91528921b197cc24fee7f4387cd98b4"
+    },
+    {
+      "path": "src/assets/fonts/MoonDance-Regular.ttf",
+      "sha1": "8e3f8e2fce04f97660e63cd7059dd66260fc2474"
+    },
+    {
+      "path": "src/assets/fonts/NovaSquare-Regular.ttf",
+      "sha1": "08c92a5ce9ab8520b50630012a5c320288ffff42"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Black.ttf",
+      "sha1": "01abc1142e597b9a7748eb2d14ff823d65a54f01"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-BlackItalic.ttf",
+      "sha1": "f9d9f79f6d10505f4659294b9a8baf09b20cd71e"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Bold.ttf",
+      "sha1": "d8091536d0fab37a3239067f708a0221070835da"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-BoldItalic.ttf",
+      "sha1": "0a317229386769448de8344da4dcaddef5150fd4"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-ExtraBold.ttf",
+      "sha1": "67f6aa1374efae5fc8f457fb92f721f49ecd45ba"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-ExtraBoldItalic.ttf",
+      "sha1": "c9e77f8ae4f167a389851f2e56dcbae1494e31bc"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-ExtraLight.ttf",
+      "sha1": "4ddd754e262de6dceba31e08b7403849d37c0d8a"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-ExtraLightItalic.ttf",
+      "sha1": "5fa8b333a480476105b142c034c7376ed3fb4d2d"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Italic-VariableFont_wght.ttf",
+      "sha1": "0b4c3a612cf31e069014ede3a502381c034fc736"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Italic.ttf",
+      "sha1": "8bd20205f1cfac7715f5f0f945cbd745c2709c80"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Light.ttf",
+      "sha1": "c570f483013f57db1a325ae1ddc2e11c115bb441"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-LightItalic.ttf",
+      "sha1": "cbe38d47698ad165698243f6731a13a190da60fa"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Medium.ttf",
+      "sha1": "941255b6a8c1e2d286ed9613bd6b354e2423dad9"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-MediumItalic.ttf",
+      "sha1": "1c2a822552942e5cba150201ac4e0a1e0f65d881"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-Regular.ttf",
+      "sha1": "465c464793593babb53e51e2a56562cdd79c237d"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-SemiBold.ttf",
+      "sha1": "047ca2a59c253520cc46b3506744fad6ef8192c6"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-SemiBoldItalic.ttf",
+      "sha1": "d930314ed16c54fd734f85d3d45f17d988254578"
+    },
+    {
+      "path": "src/assets/fonts/Nunito-VariableFont_wght.ttf",
+      "sha1": "c2adb9c3bcb684afc16cab5e70e8da3d3700a91e"
+    },
+    {
+      "path": "src/assets/fonts/Petemoss-Regular.ttf",
+      "sha1": "24696de395b1132ba4564a9ee5b80fac2a1467e3"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-Bold.ttf",
+      "sha1": "e976ee574967a0e604ff44f4118181fa5f113494"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-ExtraBold.ttf",
+      "sha1": "89d3a913b76605cc16f5510d169f7d882546806a"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-ExtraLight.ttf",
+      "sha1": "8f0d9facd5772d31e3d75c8ba57e71c54bc0749f"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-Light.ttf",
+      "sha1": "86dd57d76ea275b5a232dbbdfcc92f134a7f3832"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-Medium.ttf",
+      "sha1": "c2ae75f542d27f5f2306d0924cb3e9e00dfbc806"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-Regular.ttf",
+      "sha1": "67ff9d916ffe076820f1c3903a122b229929ddf1"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-SemiBold.ttf",
+      "sha1": "766c2896b3eaad04628101b2c576d3a4580d60f4"
+    },
+    {
+      "path": "src/assets/fonts/PlaypenSans-Thin.ttf",
+      "sha1": "d6b0d2860de3a5bb6b901887f98584eca9562b6d"
+    },
+    {
+      "path": "src/assets/fonts/Tapestry-Regular.ttf",
+      "sha1": "c7efc62e8c0cad2d234df303e6acde2265313a34"
+    },
+    {
+      "path": "src/assets/fonts/TwinkleStar-Regular.ttf",
+      "sha1": "21ff8c1ab355dc41e15971ea2de09ee826e6cddb"
+    }
+  ]
+}
