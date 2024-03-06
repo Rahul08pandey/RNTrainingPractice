@@ -11,7 +11,7 @@ const ChangePassword = ({navigation}) => {
 
   return (
     <View style={styles.mainContainer}>
-      <Header renderImage={true} />
+      <Header renderImage={true} back={true} drawer={false} />
       <View style={styles.subContainer}>
         <Text style={styles.changePassTxt}>Change Password</Text>
 

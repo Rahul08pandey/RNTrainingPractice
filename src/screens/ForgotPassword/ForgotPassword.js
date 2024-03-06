@@ -19,6 +19,7 @@ const ForgotPassword = ({navigation}) => {
 
   const closeModal = () => {
     setIsVisible(false);
+     navigation.navigate('Login');
   };
 
   return (

@@ -8,14 +8,16 @@ import DrawerNavigator from './DrawerNavigator';
 import Details from '../screens/Forum/Details/Details';
 import HaveQuestions from '../screens/Forum/HaveQuestions/HaveQuestions';
 import AnsQues from '../screens/Forum/AnsQues/AnsQues';
+import Slider from '../screens/Slider/Slider';
 
 const Stack = createStackNavigator();
 
 const AuthNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="Slider"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Slider" component={Slider} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />

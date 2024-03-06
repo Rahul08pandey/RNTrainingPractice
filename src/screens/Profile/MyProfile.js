@@ -34,7 +34,7 @@ const MyProfile = ({navigation}) => {
 
   return (
     <ScrollView style={styles.mainContainer}>
-      <Header />
+      <Header back={true} drawer={false} />
 
       <View style={styles.subContainer}>
         <Text style={styles.profileTxt}>My Profile</Text>

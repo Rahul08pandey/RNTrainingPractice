@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
   forgotContainer: {
     margin: moderateScale(15),
     padding: moderateScale(20),
-    top: '-33%',
+    marginTop: '-12%',
     backgroundColor: '#fff',
     shadowColor: '#00000040',
     shadowOffset: {width: 0, height: 2},
