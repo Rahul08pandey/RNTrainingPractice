@@ -5,13 +5,17 @@ import {useNavigation} from '@react-navigation/native';
 
 const Logout = () => {
   const [doubleButton, setDoubleButton] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const navigation = useNavigation();
 
   const handleLogout = () => {
+    setIsVisible(false);
     navigation.navigate('Login');
   };
 
   const handleCancel = () => {
+    setIsVisible(true);
+    console.log('first');
     navigation.navigate('MyProfile');
   };
 
@@ -21,6 +25,7 @@ const Logout = () => {
         title="Logout"
         message="Are you sure you want to Logout?"
         btnTxt="Logout"
+        visible={isVisible}
         dButton={doubleButton}
         onPress={handleLogout}
         cancelPress={handleCancel}

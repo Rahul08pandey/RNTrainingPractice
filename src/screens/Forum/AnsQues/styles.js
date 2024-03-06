@@ -33,14 +33,15 @@ export default styles = StyleSheet.create({
   },
 
   inputTxt: {
-    fontSize: moderateScale(18),
-    marginBottom: moderateScale(10),
     color: '#000000A8',
     fontFamily: 'Nunito-Regular',
+    fontSize: moderateScale(18),
+    marginBottom: moderateScale(10),
   },
 
   txtInput: {
     width: '100%',
+    color: '#000000',
     height: moderateScale(110),
     borderRadius: moderateScale(8),
     paddingLeft: moderateScale(10),

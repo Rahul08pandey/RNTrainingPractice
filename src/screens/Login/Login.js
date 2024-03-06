@@ -34,7 +34,7 @@ const Login = ({navigation}) => {
             placeholder="Enter Email"
             value={email}
             onChangeText={text => setEmail(text)}
-            placeholderTextColor="black"
+            placeholderTextColor="rgba(0, 0, 0, 0.27)"
             style={styles.txtInput}
           />
         </View>
@@ -45,7 +45,7 @@ const Login = ({navigation}) => {
               placeholder="Enter Password"
               value={password}
               onChangeText={text => setPassword(text)}
-              placeholderTextColor="black"
+              placeholderTextColor="rgba(0, 0, 0, 0.27)"
               style={styles.txtInput1}
             />
             <Image source={IMAGES.eye} style={styles.eyeIcon} />

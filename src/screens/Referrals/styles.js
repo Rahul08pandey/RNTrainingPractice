@@ -29,17 +29,17 @@ export default styles = StyleSheet.create({
   },
 
   txtInput: {
+    color: '#000000',
     borderRadius: moderateScale(8),
     paddingLeft: moderateScale(10),
     borderWidth: moderateScale(0.2),
-    color: '#00000045',
   },
 
   referralHeading: {
-    fontSize: moderateScale(20),
     color: '#000000',
-    marginBottom: moderateScale(10),
+    fontSize: moderateScale(20),
     fontFamily: 'Nunito-Regular',
+    marginBottom: moderateScale(10),
   },
 
   dataContainer: {

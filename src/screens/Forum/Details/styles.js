@@ -54,7 +54,6 @@ export default styles = StyleSheet.create({
 
   queryContainer: {
     marginTop: moderateScale(30),
-    //   backgroundColor: 'green',
   },
 
   query: {

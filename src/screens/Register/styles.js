@@ -42,12 +42,14 @@ export default styles = StyleSheet.create({
   },
 
   txtInput: {
+    color: '#000000',
     borderRadius: moderateScale(8),
     borderWidth: moderateScale(0.2),
     paddingLeft: moderateScale(10),
   },
 
   passwordTxtInput: {
+    color: '#000000',
     paddingLeft: moderateScale(10),
   },
 

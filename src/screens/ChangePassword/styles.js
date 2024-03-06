@@ -31,6 +31,7 @@ export default styles = StyleSheet.create({
 
   txtInput: {
     width: '100%',
+    color: '#000000',
     marginTop: moderateScale(10),
     borderRadius: moderateScale(8),
     paddingLeft: moderateScale(10),

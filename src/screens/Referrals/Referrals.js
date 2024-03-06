@@ -1,39 +1,34 @@
 import {Image, ScrollView, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './styles';
 import Header from '../../components/Header/Header';
 import CustomButton from '../../components/common/CustomButton';
+import IMAGES from '../../assets/images/index';
 
 const Referrals = () => {
-  const data = [
+  const [submitData, setSubmitData] = useState([]);
+  const [data, setData] = useState([
     {
-      name: 'Rajesh T',
-      email: 'rajesh@gmail.com',
-      date: '12/10/22',
-      contact: '9876543210',
+      name: '',
+      email: '',
+      date: '',
+      contact: '',
     },
-    {
-      name: 'Mahesh K',
-      email: 'mahesh@gmail.com',
-      date: '07/10/22',
-      contact: '9876543210',
-    },
-    {
-      name: 'Rajan K',
-      email: 'rajan@gmail.com',
-      date: '24/09/22',
-      contact: '9876543210',
-    },
-    {
-      name: 'Murthy S',
-      email: 'murthy@gmail.com',
-      date: '20/09/22',
-      contact: '9876543210',
-    },
-  ];
+  ]);
+
+  const handleInputChange = (key, value) => {
+    setData(prevState => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
 
   const handleSubmit = () => {
-    console.log('first');
+    const currentDate = new Date().toLocaleDateString();
+    const newData = {...data, date: currentDate};
+
+    setSubmitData(prevData => [...prevData, newData]);
+    setData({name: '', email: '', date: '', contact: ''});
   };
 
   return (
@@ -48,25 +43,31 @@ const Referrals = () => {
         <View style={styles.inputContainer}>
           <Text style={styles.txtInputHeading}>Name</Text>
           <TextInput
-            placeholder="Enter Name"
-            placeholderTextColor="#000000"
+            value={data.name}
             style={styles.txtInput}
+            placeholder="Enter Name"
+            placeholderTextColor="rgba(0, 0, 0, 0.27)"
+            onChangeText={text => handleInputChange('name', text)}
           />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.txtInputHeading}>Email</Text>
           <TextInput
-            placeholder="Enter Email"
-            placeholderTextColor="#000000"
+            value={data.email}
             style={styles.txtInput}
+            placeholder="Enter Email"
+            placeholderTextColor="rgba(0, 0, 0, 0.27)"
+            onChangeText={text => handleInputChange('email', text)}
           />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.txtInputHeading}>Phone</Text>
           <TextInput
-            placeholder="Enter Phone"
-            placeholderTextColor="#000000"
+            value={data.contact}
             style={styles.txtInput}
+            placeholder="Enter Phone"
+            placeholderTextColor="rgba(0, 0, 0, 0.27)"
+            onChangeText={text => handleInputChange('contact', text)}
           />
         </View>
         <CustomButton title="Submit" onPress={handleSubmit} />
@@ -75,7 +76,7 @@ const Referrals = () => {
       <View style={styles.subContainer}>
         <Text style={styles.referralHeading}>My Referrals</Text>
 
-        {data.map((item, index) => (
+        {submitData.map((item, index) => (
           <View key={index} style={styles.dataContainer}>
             <View
               style={{
@@ -91,9 +92,7 @@ const Referrals = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Image
-                  source={require('../../assets/images/calendar-small.png')}
-                />
+                <Image source={IMAGES.calendarSmall} />
                 <Text style={styles.referralData}>{item.date}</Text>
               </View>
             </View>
@@ -108,7 +107,7 @@ const Referrals = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Image source={require('../../assets/images/email.png')} />
+                <Image source={IMAGES.email} />
                 <Text style={styles.referralData}>{item.email}</Text>
               </View>
               <View
@@ -116,7 +115,7 @@ const Referrals = () => {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Image source={require('../../assets/images/contact.png')} />
+                <Image source={IMAGES.contact} />
                 <Text style={styles.referralData}>{item.contact}</Text>
               </View>
             </View>

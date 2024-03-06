@@ -19,7 +19,7 @@ const ForgotPassword = ({navigation}) => {
 
   const closeModal = () => {
     setIsVisible(false);
-     navigation.navigate('Login');
+    navigation.navigate('Login');
   };
 
   return (
@@ -54,7 +54,6 @@ const ForgotPassword = ({navigation}) => {
       </View>
 
       <CustomAlert
-        noTitle={dbButton}
         visible={isVisible}
         title="Reset Password"
         message="If that email address is in our database, we wil send you an email to reset your password."

@@ -7,17 +7,12 @@ import {Dropdown} from 'react-native-element-dropdown';
 
 const HaveQuestions = ({navigation}) => {
   const [dbButton, setdbButton] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
-  const handleCancel = () => {
-    navigation.navigate('Details');
-  };
-
-  const handlePost = () => {
-    navigation.navigate('Details');
-  };
-
-  const list = [
+  const [ques, setQues] = useState();
+  const [selectedCategory, setSelectedCategory] = useState([
+    {
+      label: '',
+      value: '',
+    },
     {
       label: 'General Guideline',
       value: 'General Guideline',
@@ -34,7 +29,15 @@ const HaveQuestions = ({navigation}) => {
       label: 'Go',
       value: 'Go',
     },
-  ];
+  ]);
+
+  const handleCancel = () => {
+    navigation.navigate('Details');
+  };
+
+  const handlePost = () => {
+    navigation.navigate('Details');
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -46,12 +49,13 @@ const HaveQuestions = ({navigation}) => {
           <View style={styles.txtInputContainer}>
             <Text style={styles.inputTxt}>Category</Text>
             <Dropdown
-              data={list}
+              data={selectedCategory}
               labelField="label"
-              valueField="value"
-              // value={value}
+              // valueField="value"
+              value="value"
               onChange={item => setSelectedCategory(item)}
               style={styles.dropDown}
+              activeColor="#e3f2fd"
             />
           </View>
           <View style={styles.txtInputContainer}>
@@ -59,6 +63,9 @@ const HaveQuestions = ({navigation}) => {
             <TextInput
               placeholder="Type your questions"
               style={styles.txtInput}
+              multiline
+              value={ques}
+              onChangeText={text => setQues(text)}
             />
           </View>
           <Text style={styles.helpTxt}>

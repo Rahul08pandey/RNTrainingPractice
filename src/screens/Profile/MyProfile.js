@@ -12,13 +12,26 @@ import Header from '../../components/Header/Header';
 import CustomButton from '../../components/common/CustomButton';
 import {Calendar} from 'react-native-calendars';
 import IMAGES from '../../assets/images';
+import CustomAlert from '../../components/common/CustomAlert/CustomAlert';
 
 const MyProfile = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
   const [isCalendar, setIsCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleLogin = () => {
+    setShowAlert(false);
+    navigation.navigate('Login');
+  };
 
   const handleUpdate = () => {
-    console.log('first');
+    setShowAlert(true);
   };
 
   const handleCalendarPress = () => {
@@ -43,9 +56,19 @@ const MyProfile = ({navigation}) => {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.txtInputHeading}>Name</Text>
-          <TextInput placeholder="Enter Name" style={styles.txtInput} />
+          <TextInput
+            value={name}
+            placeholder="Enter Name"
+            style={styles.txtInput}
+            onChangeText={text => setName(text)}
+          />
           <Text style={styles.txtInputHeading}>Email</Text>
-          <TextInput placeholder="Enter Email" style={styles.txtInput} />
+          <TextInput
+            value={email}
+            placeholder="Enter Email"
+            style={styles.txtInput}
+            onChangeText={text => setEmail(text)}
+          />
           <Text style={styles.txtInputHeading}>Date of birth</Text>
           <View style={styles.dobView}>
             <TextInput
@@ -59,15 +82,44 @@ const MyProfile = ({navigation}) => {
           </View>
           {isCalendar && <Calendar onDayPress={onDayPress} />}
           <Text style={styles.txtInputHeading}>Phone</Text>
-          <TextInput placeholder="Enter Phone" style={styles.txtInput} />
+          <TextInput
+            value={phone}
+            placeholder="Enter Phone"
+            style={styles.txtInput}
+            onChangeText={text => setPhone(text)}
+          />
           <Text style={styles.txtInputHeading}>Organization</Text>
-          <TextInput placeholder="Enter Organization" style={styles.txtInput} />
+          <TextInput
+            value={organization}
+            style={styles.txtInput}
+            placeholder="Enter Organization"
+            onChangeText={text => setOrganization(text)}
+          />
           <Text style={styles.txtInputHeading}>State</Text>
-          <TextInput placeholder="Enter State" style={styles.txtInput} />
+          <TextInput
+            value={state}
+            style={styles.txtInput}
+            placeholder="Enter State"
+            onChangeText={text => setState(text)}
+          />
           <Text style={styles.txtInputHeading}>City</Text>
-          <TextInput placeholder="Enter City" style={styles.txtInput} />
+          <TextInput
+            value={city}
+            placeholder="Enter City"
+            style={styles.txtInput}
+            onChangeText={text => setCity(text)}
+          />
         </View>
         <CustomButton title="Update" onPress={handleUpdate} />
+        {showAlert && (
+          <CustomAlert
+            noTitle
+            message="Your profile has been updated successfully!!"
+            btnTxt="OK"
+            onPress={handleLogin}
+            onClose={() => setShowAlert(false)}
+          />
+        )}
       </View>
     </ScrollView>
   );

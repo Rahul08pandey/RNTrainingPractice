@@ -17,7 +17,8 @@ const CustomAlert = ({
   const [resetScreen, setResetScreen] = useState(dButton);
   const [isAuthenticated, setisAuthenticated] = useState(true);
 
-  return isAuthenticated ? (
+  return (
+    // isAuthenticated ? (
     <Modal
       transparent={true}
       animationType="fade"
@@ -27,35 +28,37 @@ const CustomAlert = ({
       }}>
       <View style={styles.mainContainer}>
         <View style={styles.modalView}>
-          <Text style={styles.titleTxt}>{title}</Text>
+          {noTitle ? null : <Text style={styles.titleTxt}>{title}</Text>}
           <Text style={styles.popupTxt}>{message}</Text>
           <CustomButton
             title={btnTxt}
             onPress={onPress}
             twoButton={resetScreen}
+            cancelPress={cancelPress}
           />
         </View>
       </View>
     </Modal>
-  ) : (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      visible={visible}
-      onRequestClose={() => {
-        setModalVisible(!modalVisible);
-      }}>
-      <View style={styles.mainContainer}>
-        <View style={styles.modalView}>
-          <Text style={styles.popupTxt}>{message}</Text>
-          <CustomButton
-            title={btnTxt}
-            onPress={onPress}
-            twoButton={resetScreen}
-          />
-        </View>
-      </View>
-    </Modal>
+    // ) : (
+    //   <Modal
+    //     animationType="fade"
+    //     transparent={true}
+    //     visible={visible}
+    //     onRequestClose={() => {
+    //       setModalVisible(!modalVisible);
+    //     }}>
+    //     <View style={styles.mainContainer}>
+    //       <View style={styles.modalView}>
+    //         <Text style={styles.popupTxt}>{message}</Text>
+    //         <CustomButton
+    //           title={btnTxt}
+    //           onPress={onPress}
+    //           twoButton={resetScreen}
+    //         />
+    //       </View>
+    //     </View>
+    //   </Modal>
+    // );
   );
 };
 

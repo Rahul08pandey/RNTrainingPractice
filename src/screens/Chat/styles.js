@@ -20,6 +20,7 @@ export default styles = StyleSheet.create({
 
   txtInput: {
     flex: 1,
+    color: '#000000',
     paddingLeft: moderateScale(10),
     borderWidth: moderateScale(1),
     borderRadius: moderateScale(10),

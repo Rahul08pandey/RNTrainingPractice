@@ -30,21 +30,22 @@ const CustomDrawerContent = ({navigation}) => {
           <View style={styles.drawerHeader}>
             <Image source={IMAGES.can} resizeMode="cover" style={styles.img} />
           </View>
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={handleCloseDrawer}
-            underlayColor="green"
+            // underlayColor="green"
             style={{
               top: 10,
               right: 10,
               position: 'absolute',
             }}>
             <Image source={IMAGES.cross} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.drawerContent}>
           {drawerItems.map((item, index) => (
-            <TouchableOpacity
+            <TouchableHighlight
+              underlayColor="#D9D9D9"
               key={index}
               style={styles.drawerItem}
               onPress={() => navigation.navigate(item.name)}>
@@ -52,7 +53,7 @@ const CustomDrawerContent = ({navigation}) => {
                 <Image source={item.icon} style={{height: 20, width: 20}} />
                 <Text style={styles.drawerItemText}>{item.label}</Text>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
           ))}
         </View>
       </DrawerContentScrollView>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
 
   drawerItem: {
-    width: '100%',
+    // width: '50%',
     height: moderateScale(40),
     justifyContent: 'center',
     borderRadius: moderateScale(8),
