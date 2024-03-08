@@ -6,6 +6,7 @@ import Header from '../../../components/Header/Header';
 const Details = ({navigation, route}) => {
   const {params} = route;
   const ans = params && params.ans ? params.ans : '';
+  const ques = params && params.ques ? params.ques : '';
 
   const detailData = [
     {

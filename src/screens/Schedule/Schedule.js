@@ -71,7 +71,7 @@ const Schedule = () => {
               },
             }}
             hideExtraDays={true}
-            />
+          />
 
           <View style={styles.selectDateContainer}>
             <Text style={styles.selectDateText}>
@@ -99,20 +99,41 @@ const Schedule = () => {
                   <Text style={styles.imgTxt}>{item.time}</Text>
                 </View>
 
-                <View style={{flexDirection: 'row',alignItems: 'center',}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Image source={IMAGES.location} />
                   <Text style={styles.imgTxt}>{item.location}</Text>
                 </View>
               </View>
               <Text style={styles.subContainerAgenda}>{item.agenda}</Text>
-
-              <View style={{flexDirection: 'row',alignItems: 'center',marginTop: 5,}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}>
                 <Text style={styles.subContainerMeetingText}>Meeting URL:</Text>
-                <TouchableOpacity onPress={() => handleMeetingLinkPress(item.Meeting)}>
+                <TouchableOpacity
+                  onPress={() => handleMeetingLinkPress(item.Meeting)}>
                   <Text style={styles.subContainerUrl}> {item.Meeting}</Text>
                 </TouchableOpacity>
               </View>
-              <Text style={styles.pdfTxt}>Pitch Deck: {item.Document}</Text>
+              <Text
+                style={{
+                  color: '#000000',
+                  marginBottom: 10,
+                }}>
+                Pitch Deck:
+                <View>
+                  <TouchableOpacity>
+                    <Image source={IMAGES.doc} />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <TouchableOpacity>
+                    <Image source={IMAGES.pdf} />
+                  </TouchableOpacity>
+                </View>
+              </Text>
             </View>
           ))}
         </View>

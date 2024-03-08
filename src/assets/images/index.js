@@ -22,6 +22,8 @@ const IMAGES = {
   categoryWhite: require('./categoryWhite.png'),
   portfolio: require('./portfolio.png'),
   rightArrow: require('./rightArrow.png'),
+  doc: require('./doc.png'),
+  pdf: require('./pdf.png'),
   slider1: require('./m1.png'),
   slider2: require('./m2.png'),
   slider3: require('./m3.png'),

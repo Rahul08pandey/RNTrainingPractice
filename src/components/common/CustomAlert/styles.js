@@ -11,21 +11,21 @@ export default styles = StyleSheet.create({
 
   modalView: {
     width: '90%',
-    padding: moderateScale(25),
-    borderRadius: moderateScale(15),
-    shadowColor: '#000000400',
-    shadowOpacity: moderateScale(0.25),
-    shadowRadius: moderateScale(4),
-    elevation: moderateScale(5),
     backgroundColor: 'white',
+    shadowColor: '#000000400',
+    padding: moderateScale(30),
+    elevation: moderateScale(5),
+    shadowRadius: moderateScale(4),
+    borderRadius: moderateScale(15),
+    shadowOpacity: moderateScale(0.25),
   },
 
   titleTxt: {
-    fontSize: moderateScale(30),
-    marginBottom: moderateScale(10),
     color: '#000000',
     alignSelf: 'flex-start',
+    fontSize: moderateScale(30),
     fontFamily: 'Nunito-SemiBold',
+    marginBottom: moderateScale(10),
   },
 
   popupTxt: {

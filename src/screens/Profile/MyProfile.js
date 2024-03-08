@@ -52,7 +52,13 @@ const MyProfile = ({navigation}) => {
       <View style={styles.subContainer}>
         <Text style={styles.profileTxt}>My Profile</Text>
         <View style={styles.profileContainer}>
-          <Image source={IMAGES.camera} style={styles.icon} />
+          <TouchableOpacity
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image source={IMAGES.camera} style={styles.icon} />
+          </TouchableOpacity>
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.txtInputHeading}>Name</Text>
@@ -75,6 +81,7 @@ const MyProfile = ({navigation}) => {
               placeholder="Select Date"
               value={selectedDate}
               editable={false}
+              style={styles.txtInput1}
             />
             <TouchableOpacity onPress={handleCalendarPress}>
               <Image source={IMAGES.calendar} style={styles.img} />

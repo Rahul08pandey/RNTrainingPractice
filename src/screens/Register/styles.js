@@ -26,11 +26,10 @@ export default styles = StyleSheet.create({
   },
 
   passwordContainer: {
-    marginBottom: moderateScale(10),
     flexDirection: 'row',
-    borderWidth: moderateScale(0.2),
-    borderRadius: moderateScale(8),
     alignItems: 'center',
+    borderRadius: moderateScale(8),
+    borderWidth: moderateScale(0.2),
     justifyContent: 'space-between',
   },
 
@@ -41,11 +40,23 @@ export default styles = StyleSheet.create({
     fontFamily: 'Nunito-Regular',
   },
 
+  dropDown: {
+    height: moderateScale(50),
+    borderWidth: moderateScale(0.2),
+    borderRadius: moderateScale(8),
+    paddingLeft: moderateScale(10),
+  },
+
   txtInput: {
     color: '#000000',
     borderRadius: moderateScale(8),
     borderWidth: moderateScale(0.2),
     paddingLeft: moderateScale(10),
+  },
+
+  errTxt: {
+    color: 'red',
+    marginTop: 5,
   },
 
   passwordTxtInput: {

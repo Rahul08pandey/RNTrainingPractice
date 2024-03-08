@@ -54,6 +54,11 @@ export default styles = StyleSheet.create({
     borderWidth: moderateScale(0.2),
   },
 
+  errTxt: {
+    color: 'red',
+    marginTop: 5,
+  },
+
   txtInput1: {
     color: '#000000',
     paddingLeft: moderateScale(10),

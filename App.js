@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
-// import {Provider} from 'react-redux';
-// import store from './src /redux/store/store';
+import {Provider} from 'react-redux';
+import store from './src/redux/store/store';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './src/navigation/RootNavigator';
-
-// import {handleDatabase} from './FirebaseDatabase';
-// handleDatabase();
+import Register from './src/screens/Register/Register';
 
 const App = () => {
   useEffect(() => {
@@ -13,9 +11,9 @@ const App = () => {
   }, []);
 
   return (
-    // <Provider store={store}>
-    <RootNavigator />
-    // </Provider>
+    <Provider store={store}>
+      <RootNavigator />
+    </Provider>
   );
 };
 

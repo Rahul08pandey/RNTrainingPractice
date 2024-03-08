@@ -7,7 +7,8 @@ import {Dropdown} from 'react-native-element-dropdown';
 
 const HaveQuestions = ({navigation}) => {
   const [dbButton, setdbButton] = useState(true);
-  const [ques, setQues] = useState();
+  const [ques,setQues]=useState('')
+  const [response, setResponse] = useState();
   const [selectedCategory, setSelectedCategory] = useState([
     {
       label: '',
@@ -36,7 +37,7 @@ const HaveQuestions = ({navigation}) => {
   };
 
   const handlePost = () => {
-    navigation.navigate('Details');
+    navigation.navigate('Details', {ques: response});
   };
 
   return (
@@ -51,9 +52,8 @@ const HaveQuestions = ({navigation}) => {
             <Dropdown
               data={selectedCategory}
               labelField="label"
-              // valueField="value"
               value="value"
-              onChange={item => setSelectedCategory(item)}
+              onChangeText={text => setSelectedCategory(text)}
               style={styles.dropDown}
               activeColor="#e3f2fd"
             />

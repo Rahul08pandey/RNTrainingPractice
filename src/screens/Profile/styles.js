@@ -12,8 +12,8 @@ export default styles = StyleSheet.create({
   },
 
   profileTxt: {
-    fontSize: moderateScale(22),
     color: '#000000',
+    fontSize: moderateScale(22),
     fontFamily: 'Nunito-SemiBold',
   },
 
@@ -23,13 +23,11 @@ export default styles = StyleSheet.create({
     marginTop: moderateScale(10),
     borderRadius: moderateScale(50),
     borderWidth: moderateScale(0.2),
-    justifyContent: 'center',
     backgroundColor: '#D9D9D9',
   },
 
   icon: {
     position: 'absolute',
-    alignSelf: 'center',
   },
 
   inputContainer: {
@@ -49,6 +47,10 @@ export default styles = StyleSheet.create({
     paddingLeft: moderateScale(10),
     borderWidth: moderateScale(0.2),
     marginBottom: moderateScale(10),
+  },
+
+  txtInput1: {
+    color: '#000000',
   },
 
   dobView: {
