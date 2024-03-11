@@ -37,7 +37,7 @@ const Login = ({navigation, onSubmit}) => {
         Alert.alert('Login Failed', 'Invalid email or password');
       }
     } catch (error) {
-      // console.error('Error logging in:', error);
+      console.error('Error logging in:', error);
       setLoading(false);
       Alert.alert('Error', 'Something went wrong. Please try again.');
     }

@@ -3,7 +3,6 @@ import {Provider} from 'react-redux';
 import store from './src/redux/store/store';
 import SplashScreen from 'react-native-splash-screen';
 import RootNavigator from './src/navigation/RootNavigator';
-import Register from './src/screens/Register/Register';
 
 const App = () => {
   useEffect(() => {
