@@ -37,7 +37,10 @@ const Register = ({navigation, onSubmit}) => {
       if (response.status) {
         setShowAlert(true);
       } else {
-        Alert.alert('Failed to register. Please try again.');
+        Alert.alert(
+          'Email is already registered.',
+          'Please enter another email',
+        );
       }
     } catch (error) {
       console.error('Error registering user:', error);
