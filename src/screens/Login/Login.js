@@ -20,6 +20,7 @@ import {userLogin} from '../../redux/actions/actions';
 const Login = ({navigation, onSubmit}) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
   // const loginData = useSelector(state => state.auth.user);
   // console.log(loginData, 'Datalogin');
 
@@ -89,9 +90,13 @@ const Login = ({navigation, onSubmit}) => {
                   onChangeText={handleChange('password')}
                   placeholderTextColor="rgba(0, 0, 0, 0.27)"
                   style={styles.txtInput1}
-                  secureTextEntry
+                  secureTextEntry={!showPassword}
                 />
-                <Image source={IMAGES.eye} style={styles.eyeIcon} />
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}
+                  style={styles.eyeIcon}>
+                  <Image source={IMAGES.eye} />
+                </TouchableOpacity>
               </View>
               {errors.password && (
                 <Text style={styles.errTxt}>{errors.password}</Text>

@@ -24,6 +24,7 @@ import {setStates} from '../../redux/actions/actions';
 const Register = ({navigation, onSubmit}) => {
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const statesData = useSelector(state => state.auth.states);
   console.log('states.......:', statesData);
@@ -134,9 +135,13 @@ const Register = ({navigation, onSubmit}) => {
                   placeholderTextColor="rgba(0, 0, 0, 0.27)"
                   style={styles.passwordTxtInput}
                   onChangeText={handleChange('password')}
-                  secureTextEntry
+                  secureTextEntry={!showPassword}
                 />
-                <Image source={IMAGES.eye} style={styles.eyeIcon} />
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}
+                  style={styles.eyeIcon}>
+                  <Image source={IMAGES.eye} />
+                </TouchableOpacity>
               </View>
               {errors.password && (
                 <Text style={styles.errTxt}>{errors.password}</Text>
@@ -167,7 +172,6 @@ const Register = ({navigation, onSubmit}) => {
                 placeholder="Select State"
                 placeholderTextColor="rgba(0, 0, 0, 0.27)"
               />
-
               {errors.state && (
                 <Text style={styles.errTxt}>{errors.state}</Text>
               )}
