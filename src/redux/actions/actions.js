@@ -1,14 +1,8 @@
-import {
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  REGISTER_SUCCESS,
-  REGISTER_FAILURE,
-  LOGOUT,
-} from './actionTypes';
+import {LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, SET_STATES} from './actionTypes';
 
-export const loginSuccess = user => ({
+export const userLogin = userData => ({
   type: LOGIN_SUCCESS,
-  payload: user,
+  payload: userData,
 });
 
 export const loginFailure = error => ({
@@ -16,13 +10,9 @@ export const loginFailure = error => ({
   payload: error,
 });
 
-export const registerSuccess = () => ({
-  type: REGISTER_SUCCESS,
-});
-
-export const registerFailure = error => ({
-  type: REGISTER_FAILURE,
-  payload: error,
+export const setStates = states => ({
+  type: SET_STATES,
+  payload: states,
 });
 
 export const logout = () => ({

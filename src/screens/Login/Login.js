@@ -1,4 +1,11 @@
-import {Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import {Formik} from 'formik';
@@ -7,39 +14,38 @@ import CustomHeader from '../../components/common/CustomHeader';
 import IMAGES from '../../assets/images';
 import LoginForm from './LoginForm';
 import {useDispatch, useSelector} from 'react-redux';
+import {loginUser} from '../../redux/Services/api';
+import {userLogin} from '../../redux/actions/actions';
 
 const Login = ({navigation, onSubmit}) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  // const loginData = useSelector(state => state.auth.user);
+  // console.log(loginData, 'Datalogin');
 
   const handleLogin = async (email, password) => {
     try {
       setLoading(true);
-      const response = await fetch('http://54.190.192.105:9185/angel/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(email, password),
-      });
-      const data = await response.json();
+      const response = await loginUser(email, password);
+      console.log('response', response);
       setLoading(false);
-      console.log('Registration response:', data);
-      // navigation.navigate('Home');
+
+      if (response.status) {
+        navigation.navigate('Home');
+        // dispatch(response);
+      } else {
+        Alert.alert('Login Failed', 'Invalid email or password');
+      }
     } catch (error) {
-      console.error('Error registering user:', error);
+      // console.error('Error logging in:', error);
       setLoading(false);
+      Alert.alert('Error', 'Something went wrong. Please try again.');
     }
   };
 
   const handleRegister = () => {
     navigation.navigate('Register');
   };
-
-  // const handleLogin = () => {
-  //   navigation.navigate('Home');
-  //   console.log('first');
-  // };
 
   const handleReset = () => {
     navigation.navigate('ForgotPassword');
@@ -83,6 +89,7 @@ const Login = ({navigation, onSubmit}) => {
                   onChangeText={handleChange('password')}
                   placeholderTextColor="rgba(0, 0, 0, 0.27)"
                   style={styles.txtInput1}
+                  secureTextEntry
                 />
                 <Image source={IMAGES.eye} style={styles.eyeIcon} />
               </View>

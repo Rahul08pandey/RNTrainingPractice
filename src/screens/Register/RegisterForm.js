@@ -6,13 +6,16 @@ const RegisterForm = yup.object().shape({
 
   password: yup
     .string()
-    .min(8, '8c')
-    .max(20, '20c')
-    .required('Password is required'),
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+      'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
+    ),
 
   organization: yup.string().required('Organization is required'),
-  //   state: yup.string().required('Required'),
-  city: yup.string().required('Required'),
+  state: yup.string().required('State is required'),
+  city: yup.string().required('City is required'),
 });
 
 export default RegisterForm;

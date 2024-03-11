@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import styles from './styles';
@@ -16,66 +17,53 @@ import {moderateScale} from '../../utils/Metrics';
 import {Dropdown} from 'react-native-element-dropdown';
 import {Formik} from 'formik';
 import RegisterForm from './RegisterForm';
+import {registerUser, fetchStates} from '../../redux/Services/api';
+import {useSelector, useDispatch} from 'react-redux';
+import {setStates} from '../../redux/actions/actions';
 
 const Register = ({navigation, onSubmit}) => {
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [organization, setOrganization] = useState('');
-  // const [state, setState] = useState('');
-  // const [city, setCity] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-  const [states, setStates] = useState([]);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const statesData = useSelector(state => state.auth.states);
+  console.log('states.......:', statesData);
 
-  const handleRegister = async userData => {
+  const handleRegister = async values => {
     try {
       setLoading(true);
-      const response = await fetch(
-        'http://54.190.192.105:9185/angel/register',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        },
-      );
-      const data = await response.json();
+      const response = await registerUser(values);
       setLoading(false);
-      console.log('Registration response:', data);
-      setShowAlert(true);
+
+      if (response.status) {
+        setShowAlert(true);
+      } else {
+        Alert.alert('Failed to register. Please try again.');
+      }
     } catch (error) {
       console.error('Error registering user:', error);
       setLoading(false);
-    }
-  };
-
-  const fetchStates = async state => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        'http://54.190.192.105:9185/angel/get_all_state',
-      );
-      const states = await response.json();
-      setStates(states.result);
-      console.log('States:', states.result);
-    } catch (err) {
-      console.log('Error fetching states:', err);
+      Alert.alert('Error', 'Something went wrong. Please try again.');
     }
   };
 
   useEffect(() => {
-    fetchStates();
-  }, []);
+    const fetchStatesData = async () => {
+      try {
+        setLoading(true);
+        const states = await fetchStates();
+        dispatch(setStates(states));
+      } catch (err) {
+        console.log('Error fetching states:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStatesData();
+  }, [dispatch]);
 
   const openLogin = () => {
     navigation.navigate('Login');
   };
-
-  // const handleRegister = () => {
-  //   setShowAlert(true);
-  // };
 
   const handleLogin = () => {
     setShowAlert(false);
@@ -143,6 +131,7 @@ const Register = ({navigation, onSubmit}) => {
                   placeholderTextColor="rgba(0, 0, 0, 0.27)"
                   style={styles.passwordTxtInput}
                   onChangeText={handleChange('password')}
+                  secureTextEntry
                 />
                 <Image source={IMAGES.eye} style={styles.eyeIcon} />
               </View>
@@ -166,7 +155,7 @@ const Register = ({navigation, onSubmit}) => {
             <View style={styles.inputContainer}>
               <Text style={styles.txtInputHeading}>State</Text>
               <Dropdown
-                data={states}
+                data={statesData}
                 labelField="state"
                 valueField="_id"
                 onChange={item => handleChange('state')(item.state)}

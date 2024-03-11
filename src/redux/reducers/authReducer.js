@@ -1,17 +1,16 @@
 import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  REGISTER_SUCCESS,
-  REGISTER_FAILURE,
   LOGOUT,
+  SET_STATES,
 } from '../actions/actionTypes';
 
 const initialState = {
-  user: null,
+  user: [],
   error: null,
   loading: false,
-  // registered: false,
   isAuthenticated: false,
+  states: [],
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,39 +18,30 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        // error: null,
-        user: action.payload,
+        loading: false,
         isAuthenticated: true,
+        user: action.payload,
+        error: null,
       };
     case LOGIN_FAILURE:
-    // return {
-    //   ...state,
-    //   user: null,
-    //   error: action.payload,
-    //   isAuthenticated: false,
-    // };
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error: action.payload,
+        isAuthenticated: false,
+      };
     case LOGOUT:
       return {
         ...state,
         user: null,
         isAuthenticated: false,
       };
-
-    case REGISTER_SUCCESS:
+    case SET_STATES:
       return {
         ...state,
-        // loading: false,
-        error: null,
-        registered: true,
+        states: action.payload,
       };
-
-    case REGISTER_FAILURE:
-    // return {
-    //   ...state,
-    //   loading: false,
-    //   registered: false,
-    //   error: action.payload,
-    // };
 
     default:
       return state;
