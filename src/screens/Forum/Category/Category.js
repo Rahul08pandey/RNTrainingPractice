@@ -1,31 +1,31 @@
 import {FlatList, Text, Touchable, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import Header from '../../../components/Header/Header';
+import {useDispatch, useSelector} from 'react-redux';
+import {forumCategory} from '../../../redux/services/api';
 
 const Category = ({navigation}) => {
-  const forumData = [
-    {
-      title: 'General Guideline',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-    {
-      title: 'Pitch Session',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-    {
-      title: 'Valuations & MRR',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-    {
-      title: 'General Guideline',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-    {
-      title: 'Pitch Session',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-  ];
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const forumData = useSelector(state => state.forum.category);
+  console.log('forumData......////', forumData);
+
+  useEffect(() => {
+    const fetchForum = async () => {
+      try {
+        setLoading(true);
+        const forumResponse = await forumCategory();
+        console.log('forumResponse:', forumResponse.result);
+        dispatch(forumCategory(data));
+      } catch (err) {
+        dispatch(setError(err.message));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+    fetchForum();
+  }, [dispatch]);
 
   const infoData = () => {
     navigation.navigate('Details');

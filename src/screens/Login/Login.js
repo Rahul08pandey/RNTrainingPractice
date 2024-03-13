@@ -30,7 +30,7 @@ const Login = ({navigation, onSubmit}) => {
       const response = await loginUser(email, password);
       setLoading(false);
 
-      console.log('status', response.status);
+      // console.log('status', response.status);
       if (response.status) {
         dispatch(loginSuccess(response));
         navigation.navigate('Home');

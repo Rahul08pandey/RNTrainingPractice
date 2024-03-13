@@ -27,7 +27,7 @@ const Register = ({navigation, onSubmit}) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const statesData = useSelector(state => state.auth.states);
-  console.log('states!!!!!!!!!:', statesData);
+  // console.log('states!!!!!!!!!:', statesData);
 
   const handleRegister = async values => {
     try {
