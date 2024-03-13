@@ -40,6 +40,7 @@ export default styles = StyleSheet.create({
   otherMsgContainer: {
     marginBottom: moderateScale(10),
     alignItems: 'flex-start',
+    // backgroundColor: 'green',
   },
 
   myTxtContainer: {
@@ -51,19 +52,20 @@ export default styles = StyleSheet.create({
 
   otherTxtContainer: {
     padding: moderateScale(10),
+    marginBottom: moderateScale(5),
     borderRadius: moderateScale(10),
     backgroundColor: 'rgba(218, 218, 218, 0.38)',
   },
 
   message: {
-    fontSize: moderateScale(18),
     color: 'rgba(0,0,0,1)',
+    fontSize: moderateScale(18),
     fontFamily: 'Nunito-Regular',
   },
 
   timestamp: {
-    fontSize: moderateScale(14),
     color: '#00000073',
+    fontSize: moderateScale(14),
     fontFamily: 'Nunito-Regular',
   },
 });

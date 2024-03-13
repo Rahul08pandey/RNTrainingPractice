@@ -10,7 +10,6 @@ export const registerUser = async userData => {
       body: JSON.stringify(userData),
     });
     const data = await response.json();
-    console.log('Registration response:', data);
     if (data.status) {
       await loginUser(userData.email, userData.password);
     }
@@ -33,12 +32,14 @@ export const loginUser = async (email, password) => {
 
     if (!response.ok) {
       console.log('Failed to login');
+      throw new Error('Login failed');
     }
     const data = await response.json();
     // console.log('DATA.....', data);
     return data;
   } catch (error) {
     console.log('Error:', error.message);
+    throw error;
   }
 };
 

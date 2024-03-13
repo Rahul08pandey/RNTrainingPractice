@@ -1,13 +1,8 @@
-import {LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, SET_STATES} from './actionTypes';
+import {LOGIN_SUCCESS, LOGOUT, SET_STATES} from './actionTypes';
 
-export const userLogin = userData => ({
+export const loginSuccess = credentials => ({
   type: LOGIN_SUCCESS,
-  payload: userData,
-});
-
-export const loginFailure = error => ({
-  type: LOGIN_FAILURE,
-  payload: error,
+  payload: credentials,
 });
 
 export const setStates = states => ({

@@ -14,26 +14,26 @@ import CustomHeader from '../../components/common/CustomHeader';
 import IMAGES from '../../assets/images';
 import LoginForm from './LoginForm';
 import {useDispatch, useSelector} from 'react-redux';
-import {loginUser} from '../../redux/Services/api';
-import {userLogin} from '../../redux/actions/actions';
+import {loginUser} from '../../redux/services/api';
+import {loginSuccess} from '../../redux/actions/actions';
 
 const Login = ({navigation, onSubmit}) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  // const loginData = useSelector(state => state.auth.user);
-  // console.log(loginData, 'Datalogin');
+  const loginData = useSelector(state => state.auth.user);
+  console.log('loginData:', loginData);
 
   const handleLogin = async (email, password) => {
     try {
       setLoading(true);
       const response = await loginUser(email, password);
-      console.log('response', response);
       setLoading(false);
 
+      console.log('status', response.status);
       if (response.status) {
+        dispatch(loginSuccess(response));
         navigation.navigate('Home');
-        // dispatch(response);
       } else {
         Alert.alert('Login Failed', 'Invalid email or password');
       }

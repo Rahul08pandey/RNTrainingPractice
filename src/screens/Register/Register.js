@@ -17,7 +17,7 @@ import {moderateScale} from '../../utils/Metrics';
 import {Dropdown} from 'react-native-element-dropdown';
 import {Formik} from 'formik';
 import RegisterForm from './RegisterForm';
-import {registerUser, fetchStates} from '../../redux/Services/api';
+import {registerUser, fetchStates} from '../../redux/services/api';
 import {useSelector, useDispatch} from 'react-redux';
 import {setStates} from '../../redux/actions/actions';
 
@@ -27,7 +27,7 @@ const Register = ({navigation, onSubmit}) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const statesData = useSelector(state => state.auth.states);
-  console.log('states.......:', statesData);
+  console.log('states!!!!!!!!!:', statesData);
 
   const handleRegister = async values => {
     try {
@@ -35,6 +35,7 @@ const Register = ({navigation, onSubmit}) => {
       const response = await registerUser(values);
       setLoading(false);
 
+      // console.log('status', response.status);
       if (response.status) {
         setShowAlert(true);
       } else {
@@ -54,8 +55,9 @@ const Register = ({navigation, onSubmit}) => {
     const fetchStatesData = async () => {
       try {
         setLoading(true);
-        const states = await fetchStates();
-        dispatch(setStates(states));
+        const statesResponse = await fetchStates();
+        // console.log('statesResponse:', statesResponse);
+        dispatch(setStates(statesResponse));
       } catch (err) {
         console.log('Error fetching states:', err);
       } finally {

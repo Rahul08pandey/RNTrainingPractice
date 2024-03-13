@@ -1,12 +1,7 @@
-import {
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT,
-  SET_STATES,
-} from '../actions/actionTypes';
+import {LOGIN_SUCCESS, LOGOUT, SET_STATES} from '../actions/actionTypes';
 
 const initialState = {
-  user: [],
+  user: null,
   error: null,
   loading: false,
   isAuthenticated: false,
@@ -21,15 +16,8 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticated: true,
         user: action.payload,
+
         error: null,
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-        user: null,
-        loading: false,
-        error: action.payload,
-        isAuthenticated: false,
       };
     case LOGOUT:
       return {
@@ -40,6 +28,8 @@ const authReducer = (state = initialState, action) => {
     case SET_STATES:
       return {
         ...state,
+        error: null,
+        loading: false,
         states: action.payload,
       };
 
