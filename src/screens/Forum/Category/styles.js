@@ -32,13 +32,13 @@ export default styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.25)',
   },
 
-  title: {
+  category_name: {
     fontSize: moderateScale(20),
     color: '#0A4975',
     fontFamily: 'Nunito-SemiBold',
   },
 
-  text: {
+  description: {
     fontSize: moderateScale(16),
     paddingTop: moderateScale(10),
     color: '#000000A8',

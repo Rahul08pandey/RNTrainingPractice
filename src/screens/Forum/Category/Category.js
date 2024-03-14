@@ -8,20 +8,21 @@ import {forumCategory} from '../../../redux/services/api';
 const Category = ({navigation}) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const forumData = useSelector(state => state.forum.category);
-  console.log('forumData......////', forumData);
+  const [forumData, setForumData] = useState([]);
+  // const forumData = useSelector(state => state.forum.category);
+  // console.log('forumData......////', forumData);
 
   useEffect(() => {
     const fetchForum = async () => {
       try {
         setLoading(true);
         const forumResponse = await forumCategory();
-        console.log('forumResponse:', forumResponse.result);
-        dispatch(forumCategory(data));
+        console.log('forumResponse:', forumResponse);
+        // dispatch(forumCategory(data));
       } catch (err) {
-        dispatch(setError(err.message));
+        console.error('Error fetching forum Data:', err);
       } finally {
-        dispatch(setLoading(false));
+        setLoading(false);
       }
     };
     fetchForum();
@@ -34,8 +35,8 @@ const Category = ({navigation}) => {
   const renderForumData = ({item}) => (
     <View style={styles.dataContainer}>
       <TouchableOpacity onPress={infoData}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.text}>{item.text}</Text>
+        <Text style={styles.category_name}>{item.category_name}</Text>
+        <Text style={styles.description}>{item.description}</Text>
       </TouchableOpacity>
     </View>
   );

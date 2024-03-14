@@ -34,7 +34,6 @@ const Register = ({navigation, onSubmit}) => {
       setLoading(true);
       const response = await registerUser(values);
       setLoading(false);
-
       // console.log('status', response.status);
       if (response.status) {
         setShowAlert(true);

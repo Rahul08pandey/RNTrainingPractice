@@ -11,43 +11,59 @@ import Header from '../../components/Header/Header';
 import {Calendar} from 'react-native-calendars';
 import styles from './styles';
 import IMAGES from '../../assets/images';
+import {schedule} from '../../redux/services/api';
+import {useEffect} from 'react';
 
 const Schedule = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [selectDate, setSelectDate] = useState(null);
+  const [selectedEvents, setSelectedEvents] = useState([]);
 
-  const events = [
-    {
-      topic: 'Pitch Session 1: Jasper Infotech',
-      type: 'Pitch Session',
-      time: '4 PM',
-      location: 'Virtual',
-      agenda:
-        'Pitch Session for 3 startups: Jasper Infotech, My Home, XYZ housing',
-      Meeting: 'https://zoom.us/meeting_id/32432',
-      Document: 'PDF',
-    },
-    {
-      topic: 'Pitch Session 2: My Home',
-      type: 'Pitch Session',
-      time: '4 PM',
-      location: 'Virtual',
-      agenda:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      Meeting: 'https://zoom.us/meeting_id/32432',
-      Document: 'PDF',
-    },
-    {
-      topic: 'Pitch Session 3: My Home',
-      type: 'Pitch Session',
-      time: '4 PM',
-      location: 'Virtual',
-      agenda: 'Pitch Session for My Home',
-      Meeting: 'https://zoom.us/meeting_id/32432',
-      Document: 'PDF',
-    },
-  ];
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        setLoading(true);
+        const eventResponse = await schedule();
+        // console.log('eventResponse:', eventResponse);
+        setEvents(eventResponse.result);
+        // dispatch(eventResponse());
+      } catch (error) {
+        // console.error('Error fetching schedules:', error);
+        throw new error();
+      } finally {
+        setLoading(false);
+      }
+    };
+    getSchedules();
+  }, []);
+
+  useEffect(() => {
+    if (selectDate && events.length > 0) {
+      const selectedEvents = events.filter(item => {
+        const eventDate = item.date.split('T')[0];
+        return eventDate === selectDate;
+      });
+      // console.log(
+      //   'Selected events:',
+      //   selectedEvents,
+      //   'Selected date:',
+      //   selectDate,
+      //   'All events:',
+      //   events,
+      // );
+
+      setSelectedEvents(selectedEvents);
+    } else {
+      setSelectedEvents([]);
+    }
+  }, [selectDate, events]);
 
   const handleMeetingLinkPress = url => {
+    Linking.openURL(url);
+  };
+
+  const handleFileLinkPress = url => {
     Linking.openURL(url);
   };
 
@@ -72,21 +88,20 @@ const Schedule = () => {
             }}
             hideExtraDays={true}
           />
-
           <View style={styles.selectDateContainer}>
             <Text style={styles.selectDateText}>
               {selectDate ? selectDate : 'No date selected'}
             </Text>
           </View>
 
-          {events.map((item, index) => (
+          {selectedEvents.map((item, index) => (
             <View key={index} style={styles.itemsContainer}>
-              <Text style={styles.topicTxt}>{item.topic}</Text>
+              <Text style={styles.topicTxt}>{item.title}</Text>
               <View style={styles.items}>
                 <View style={{flexDirection: 'row'}}>
                   <Text style={styles.typeTxt}>Type: </Text>
                   <Text style={{fontFamily: 'Nunito-Regular', fontSize: 16}}>
-                    {item.type}
+                    {item.event_type}
                   </Text>
                 </View>
 
@@ -104,7 +119,7 @@ const Schedule = () => {
                   <Text style={styles.imgTxt}>{item.location}</Text>
                 </View>
               </View>
-              <Text style={styles.subContainerAgenda}>{item.agenda}</Text>
+              <Text style={styles.descriptionTxt}>{item.description}</Text>
               <View
                 style={{
                   flexDirection: 'row',
@@ -113,23 +128,28 @@ const Schedule = () => {
                 }}>
                 <Text style={styles.subContainerMeetingText}>Meeting URL:</Text>
                 <TouchableOpacity
-                  onPress={() => handleMeetingLinkPress(item.Meeting)}>
-                  <Text style={styles.subContainerUrl}> {item.Meeting}</Text>
+                  onPress={() => handleMeetingLinkPress(item.meeting_url)}>
+                  <Text style={styles.url}>{item.meeting_url}</Text>
                 </TouchableOpacity>
               </View>
               <Text
                 style={{
                   color: '#000000',
                   marginBottom: 10,
+                  marginTop: 10,
                 }}>
                 Pitch Deck:
                 <View>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                  // onPress={() => handleFileLinkPress(item.pdf_url)}
+                  >
                     <Image source={IMAGES.doc} />
                   </TouchableOpacity>
                 </View>
                 <View>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                  // onPress={() => handleFileLinkPress(item.pdf_url)}
+                  >
                     <Image source={IMAGES.pdf} />
                   </TouchableOpacity>
                 </View>

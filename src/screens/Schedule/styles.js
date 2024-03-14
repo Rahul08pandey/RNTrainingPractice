@@ -19,13 +19,13 @@ export default styles = StyleSheet.create({
 
   selectDateContainer: {
     marginVertical: moderateScale(10),
-    // backgroundColor:'green',
+    // backgroundColor: 'green',
   },
 
   subContainerText: {
+    color: '#0A4975',
     padding: moderateScale(10),
     fontSize: moderateScale(16),
-    color: '#0A4975',
     fontFamily: 'Nunito-SemiBold',
   },
 
@@ -57,15 +57,16 @@ export default styles = StyleSheet.create({
 
   imgTxt: {
     fontSize: moderateScale(14),
-    marginLeft: moderateScale(10),
+    marginLeft: moderateScale(5),
     color: 'rgba(0, 0, 0, 0.66)',
     fontFamily: 'Nunito-Regular',
   },
 
-  subContainerAgenda: {
+  descriptionTxt: {
+    color: '#000000A8',
+    color: 'rgba(0,0,0,0.66)',
     fontSize: moderateScale(14),
     marginTop: moderateScale(5),
-    color: 'rgba(0,0,0,0.66)',
     fontFamily: 'Nunito-Regular',
   },
 
@@ -75,10 +76,12 @@ export default styles = StyleSheet.create({
     fontFamily: 'Nunito-Medium',
   },
 
-  subContainerUrl: {
+  url: {
+    marginLeft: 5,
     fontSize: moderateScale(14),
-    color: 'rgba(0, 10, 255, 0.66)',
     fontFamily: 'Nunito-Regular',
+    color: 'rgba(0, 10, 255, 0.66)',
+    textDecorationLine: 'underline',
   },
 
   selectDateText: {

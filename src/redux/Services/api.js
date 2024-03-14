@@ -1,3 +1,4 @@
+let Authentication_Key = '';
 const BASE_URL = 'http://54.190.192.105:9185/angel';
 
 export const registerUser = async userData => {
@@ -29,13 +30,13 @@ export const loginUser = async (email, password) => {
       },
       body: JSON.stringify(email, password),
     });
-
     if (!response.ok) {
       console.log('Failed to login');
       throw new Error('Login failed');
     }
     const data = await response.json();
-    // console.log('DATA.....', data);
+    Authentication_Key = data.Token;
+    console.log('DATA.....', data.Token);
     return data;
   } catch (error) {
     console.log('Error:', error.message);
@@ -47,7 +48,7 @@ export const fetchStates = async () => {
   try {
     const response = await fetch(`${BASE_URL}/get_all_state`);
     const states = await response.json();
-    console.log('States:', states);
+    // console.log('States:', states);
     return states.result;
   } catch (err) {
     console.log('Error fetching states:', err);
@@ -61,20 +62,40 @@ export const forumCategory = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application.json',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVlZGE5M2YzNGUwNmQxOTBiNTU2ZWUiLCJpYXQiOjE3MTAzMTk1NzksImV4cCI6MTcxMjkxMTU3OX0.7mLfvkSIcDNXXbOemIxophz-3NjlAHZfD1zDFf9z22A',
+        Authorization: Authentication_Key,
+      },
+    });
+
+    console.log(response, 'response');
+    if (!response.ok) {
+      throw new Error('Failed to fetch forum data');
+    }
+    const forumData = await response.json();
+    console.log(forumData, 'forumData');
+    return forumData;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const schedule = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/get_Events`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: Authentication_Key,
       },
     });
 
     if (!response.ok) {
-      console.log('Forum data');
-      throw new Error('Failed to fetch forum data');
+      throw new Error('Failed to fetch event data');
     }
-    const forumData = await response.json();
-    // console.log(forumData, 'forumData');
-    return forumData;
+    const eventsData = await response.json();
+    // console.log(eventsData, 'eventsData');
+    return eventsData;
   } catch (error) {
-    console.log('first');
+    console.log('error:', error);
     throw error;
   }
 };
