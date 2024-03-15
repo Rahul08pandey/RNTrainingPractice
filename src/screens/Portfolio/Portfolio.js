@@ -1,47 +1,38 @@
 import {View, Text, FlatList, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../../components/Header/Header';
 import styles from './styles';
 import IMAGES from '../../assets/images';
+import {portfolio} from '../../redux/services/api';
 
 export default function Portfolio() {
-  const data = [
-    {
-      name: 'Jerry Infotech',
-      text: 'On demand food delivery startup',
-      amount: 'INR 3.50 lakhs',
-      shares: 1.345,
-      valuation: 'INR 3.5 Cr',
-      roundSize: 'INR 50 lakhs',
-      investment: '12/10/22',
-    },
-    {
-      name: 'XYC Inc',
-      text: 'Authentic Indian Tea',
-      amount: 'INR 3.50 lakhs',
-      shares: 1.279,
-      valuation: 'INR 3.5 Cr',
-      roundSize: 'INR 20 lakhs',
-      investment: '12/10/22',
-    },
-    {
-      name: 'ABC Inc',
-      text: 'Robotics, drones',
-      amount: 'INR 4.50 lakhs',
-      shares: 435,
-      valuation: 'INR 5 Cr',
-      roundSize: 'INR 50 lakhs',
-      investment: '12/10/22',
-    },
-  ];
+  const [portfolioData, setPortfolioData] = useState([]);
+
+  useEffect(() => {
+    const getPortfolio = async () => {
+      try {
+        const portfolioResponse = await portfolio();
+        console.log(portfolioResponse, 'RESPONSE.....////');
+        setPortfolioData(portfolioResponse);
+        // if (portfolioResponse && portfolioResponse.result) {
+        //   setPortfolioData(portfolioResponse.result);
+        // } else {
+        //   console.error('Invalid portfolio data received:', portfolioResponse);
+        // }
+      } catch (error) {
+        throw new error();
+      }
+    };
+    getPortfolio();
+  }, []);
 
   const renderItem = ({item}) => (
     <View style={styles.itemData}>
       <View style={{flexDirection: 'row'}}>
         <Image source={IMAGES.jerry} />
         <View style={{flexDirection: 'column'}}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.text}>{item.text}</Text>
+          <Text style={styles.name}>{item.company_name}</Text>
+          <Text style={styles.text}>{item.description}</Text>
         </View>
       </View>
       <View
@@ -54,7 +45,7 @@ export default function Portfolio() {
           <Text style={styles.txt}>Amount:</Text> {item.amount}
         </Text>
         <Text style={styles.details}>
-          <Text style={styles.txt}># of shares:</Text> {item.shares}
+          <Text style={styles.txt}># of shares:</Text> {item.number_of_share}
         </Text>
       </View>
       <View
@@ -67,7 +58,7 @@ export default function Portfolio() {
           <Text style={styles.txt}>At Valuation:</Text> {item.valuation}
         </Text>
         <Text style={styles.details}>
-          <Text style={styles.txt}>Round Size:</Text> {item.roundSize}
+          <Text style={styles.txt}>Round Size:</Text> {item.round_size}
         </Text>
       </View>
       <View style={{marginTop: 2}}>
@@ -87,9 +78,10 @@ export default function Portfolio() {
 
         <View>
           <FlatList
-            data={data}
+            data={portfolioData}
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
+            ListEmptyComponent={<Text>No data available</Text>}
           />
         </View>
       </View>

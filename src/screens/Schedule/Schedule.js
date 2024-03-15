@@ -16,23 +16,17 @@ import {useEffect} from 'react';
 
 const Schedule = () => {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [selectDate, setSelectDate] = useState(null);
   const [selectedEvents, setSelectedEvents] = useState([]);
 
   useEffect(() => {
     const getSchedules = async () => {
       try {
-        setLoading(true);
         const eventResponse = await schedule();
-        // console.log('eventResponse:', eventResponse);
         setEvents(eventResponse.result);
         // dispatch(eventResponse());
       } catch (error) {
-        // console.error('Error fetching schedules:', error);
         throw new error();
-      } finally {
-        setLoading(false);
       }
     };
     getSchedules();
@@ -44,15 +38,6 @@ const Schedule = () => {
         const eventDate = item.date.split('T')[0];
         return eventDate === selectDate;
       });
-      // console.log(
-      //   'Selected events:',
-      //   selectedEvents,
-      //   'Selected date:',
-      //   selectDate,
-      //   'All events:',
-      //   events,
-      // );
-
       setSelectedEvents(selectedEvents);
     } else {
       setSelectedEvents([]);
@@ -76,7 +61,6 @@ const Schedule = () => {
           <Text style={styles.heading}>Calendar</Text>
           <Calendar
             onDayPress={day => {
-              console.log('Date:', day);
               setSelectDate(day.dateString);
             }}
             markedDates={{
@@ -120,6 +104,7 @@ const Schedule = () => {
                 </View>
               </View>
               <Text style={styles.descriptionTxt}>{item.description}</Text>
+              {}
               <View
                 style={{
                   flexDirection: 'row',

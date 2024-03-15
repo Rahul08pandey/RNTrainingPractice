@@ -1,4 +1,4 @@
-import {FlatList, Text, Touchable, TouchableOpacity, View} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import Header from '../../../components/Header/Header';
@@ -7,26 +7,21 @@ import {forumCategory} from '../../../redux/services/api';
 
 const Category = ({navigation}) => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const [forumData, setForumData] = useState([]);
-  // const forumData = useSelector(state => state.forum.category);
-  // console.log('forumData......////', forumData);
 
   useEffect(() => {
     const fetchForum = async () => {
       try {
-        setLoading(true);
         const forumResponse = await forumCategory();
-        console.log('forumResponse:', forumResponse);
+        // console.log('forumResponse:', forumResponse.result);
+        setForumData(forumResponse.result);
         // dispatch(forumCategory(data));
-      } catch (err) {
-        console.error('Error fetching forum Data:', err);
-      } finally {
-        setLoading(false);
+      } catch (error) {
+        throw new error();
       }
     };
     fetchForum();
-  }, [dispatch]);
+  }, []);
 
   const infoData = () => {
     navigation.navigate('Details');

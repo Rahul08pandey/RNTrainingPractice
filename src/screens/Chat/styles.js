@@ -28,8 +28,9 @@ export default styles = StyleSheet.create({
   },
 
   sendBtn: {
+    bottom: 15,
     position: 'absolute',
-    right: 15,
+    right: 10,
   },
 
   myMsgContainer: {

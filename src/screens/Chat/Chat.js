@@ -1,14 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import styles from './styles';
-import {GiftedChat, Avatar, Bubble} from 'react-native-gifted-chat';
-import {
-  View,
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-  Text,
-  Image,
-} from 'react-native';
+import {GiftedChat, Bubble} from 'react-native-gifted-chat';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Header from '../../components/Header/Header';
 import IMAGES from '../../assets/images';
 
@@ -124,6 +117,18 @@ const Chat = () => {
     return (
       <Bubble
         {...props}
+        textStyle={{
+          right: {
+            fontSize: 18,
+            color: '#000000',
+            fontFamily: 'Nunito-Regular',
+          },
+          left: {
+            fontSize: 18,
+            color: '#000000',
+            fontFamily: 'Nunito-Regular',
+          },
+        }}
         wrapperStyle={{
           right: {
             backgroundColor: '#0A49751A',
@@ -136,24 +141,26 @@ const Chat = () => {
     );
   };
 
-  const renderMessage = () => {
+  const renderTime = props => {
     return (
-      <View>
-        <Text>Hlo</Text>
+      <View
+        style={{
+          marginLeft: 10,
+          marginRight: 10,
+        }}>
+        <Text
+          style={{
+            fontSize: 14,
+            color: '#00000073',
+          }}>
+          {props.currentMessage.createdAt.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}
+        </Text>
       </View>
     );
   };
-
-  //   const renderAvatar = props => {
-  //     return (
-  //       <Avatar
-  //             {...props}
-  //             onPressAvator={(avatarUser) => (
-
-  //         )}
-  //       />
-  //     );
-  //   };
 
   return (
     <View style={styles.mainContainer}>
@@ -161,16 +168,24 @@ const Chat = () => {
       <GiftedChat
         messages={messages}
         onSend={messages => onSend(messages)}
-        placeholder="write a msg user....."
-        // multiline={false}
+        user={{
+          _id: 1,
+          name: 'N G',
+        }}
         renderBubble={renderBubble}
+        showAvatarForEveryMessage={true}
+        showUserAvatar={true} // receiver avatar show
+        renderAvatarOnTop={true} // avatar position
+        isTyping={true}
+        renderTime={renderTime}
+        placeholder="Type your message"
+        // alwaysShowSend={true} // send button always show
+        // renderInputToolbar={CustomTextInput}
+        // multiline={false}
+        //   inverted={false}
         //   renderMessage={renderMessage}
         //   renderTicks={renderTicks}
-        //   renderAvatar={renderAvatar}
         //   messageIdGenerator={() => messageIdGenerator(messages)}
-        alwaysShowSend={true} // send button always show
-        isTyping={true}
-        renderAvatarOnTop={true}
         //   renderUsernameOnMessage={true}
         //   onLayout=
 
@@ -178,10 +193,6 @@ const Chat = () => {
         //     resizeMode: 'cover',
         //     style: {width: 200, height: 200},
         //   }}
-        //   inverted={false}
-        user={{
-          _id: 1,
-        }}
       />
     </View>
   );

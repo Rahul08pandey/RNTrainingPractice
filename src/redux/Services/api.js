@@ -36,7 +36,7 @@ export const loginUser = async (email, password) => {
     }
     const data = await response.json();
     Authentication_Key = data.Token;
-    console.log('DATA.....', data.Token);
+    // console.log('DATA.....', data.Token);
     return data;
   } catch (error) {
     console.log('Error:', error.message);
@@ -66,17 +66,36 @@ export const forumCategory = async () => {
       },
     });
 
-    console.log(response, 'response');
     if (!response.ok) {
       throw new Error('Failed to fetch forum data');
     }
     const forumData = await response.json();
-    console.log(forumData, 'forumData');
     return forumData;
   } catch (error) {
     throw error;
   }
 };
+
+// export const forumAnswer = async () => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/update_question_data`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: Authentication_Key,
+//       },
+//     });
+
+//     console.log(response, 'response');
+//     console.log(response.ok, 'responseOK');
+//     if (!response.ok) {
+//       const forumAnswer = await response.json();
+//       console.log(forumAnswer, 'forumAnswer');
+//     }
+//   } catch (error) {
+//     throw new Error('Failed to fetch forumAnswer');
+//   }
+// };
 
 export const schedule = async () => {
   try {
@@ -92,10 +111,30 @@ export const schedule = async () => {
       throw new Error('Failed to fetch event data');
     }
     const eventsData = await response.json();
-    // console.log(eventsData, 'eventsData');
     return eventsData;
   } catch (error) {
     console.log('error:', error);
+    throw error;
+  }
+};
+
+export const portfolio = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/get_all_portfolio`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: Authentication_Key,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch portfolio data');
+    }
+
+    const portfolioData = await response.json();
+    return portfolioData;
+  } catch (error) {
     throw error;
   }
 };

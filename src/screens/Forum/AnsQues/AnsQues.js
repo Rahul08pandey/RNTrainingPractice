@@ -1,12 +1,25 @@
 import {Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import Header from '../../../components/Header/Header';
 import CustomButton from '../../../components/common/CustomButton';
+import {forumAnswer} from '../../../redux/services/api';
 
 const AnsQues = ({navigation}) => {
   const [dbButton, setdbButton] = useState(true);
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState([]);
+
+  // useEffect(() => {
+  //   const answer = async () => {
+  //     try {
+  //       const forumResponse = await forumAnswer();
+  //       console.log(forumResponse, 'forumResponse');
+  //     } catch (error) {
+  //       throw new error();
+  //     }
+  //   };
+  //   answer();
+  // }, []);
 
   const handleCancel = () => {
     navigation.navigate('Details');
